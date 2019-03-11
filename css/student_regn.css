@@ -1,0 +1,261 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+/*.signup_form {
+  width: 100%;
+  background: #eeeeee;
+  opacity: 0.8;
+  max-width: 500px;
+  margin: 10px auto;
+  font-size: 15.5px;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 25.079px;
+  letter-spacing: -0.5px;
+  -webkit-transition: box-shadow 0.4s ease;
+  transition: box-shadow 0.4s ease;
+  box-shadow: 0px 2px 10px #666666;
+}
+
+
+.contact-us{
+  color:black;
+  background-image: url(../images/contact_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+/*.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
+
+#gender input{
+	float: left;
+	clear: none;
+}
+
+*/
+body,html {
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+}
+
+.signup_form {
+  margin-left: 20%;
+  margin-right: 20%;
+  display: inline-block;
+  width: 800px;
+  background-color: #f6f6f6;
+  padding: 30px 50px 30px;
+  font: inherit;
+  font-variant: small-caps;
+  font-size: 15px;
+  opacity: 0.8;
+  box-shadow: 0px 4px 16px #666;
+}
+
+.signup_form table {
+  font: inherit;
+  font-variant: small-caps;
+  font-size: 15px;
+}
+
+.signup_form:hover {
+  box-shadow: 0px 4px 16px #666;
+  opacity: 0.9;
+}
+
+.signup_form input {
+  margin-bottom: 10px;
+}
+
+.signup_form input:hover {
+  box-shadow: 0px 4px 16px #f6f6f6;
+  opacity: 0.9;
+}
+
+.signup_form input[type=submit]:hover {
+  box-shadow: 0px 4px 16px #666;
+  opacity: 0.9;
+}
+
+.signup_form input[type=reset]:hover {
+  box-shadow: 0px 4px 16px #666;
+  opacity: 0.9;
+}
+
+/*form.contact-form ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+form.contact-form ul li {
+  padding: 0;
+  border-bottom: 1px solid #b3b3b3;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+form.contact-form ul li i.form-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 2%;
+  text-align: center;
+  margin: 0 0.5% 0 1%;
+  padding: 0;
+  font-size: 16.275px;
+  color: #fff;
+}
+form.contact-form ul li input[type="text"] {
+  width: 90%;
+  background: none;
+  margin: 0;
+  padding: 10.33333385px 2%;
+  border: 0;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  -webkit-transition: border-bottom 0.35s ease;
+  transition: border-bottom 0.35s ease;
+}
+/*form.contact-form ul li input[type="text"]:hover {
+  outline: none;
+  box-shadow: 0px 2px 0px #999999, 0px 0px 0px #666666;
+}
+form.contact-form ul li input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid #5C5958;
+}
+form.contact-form ul li input[type="text"]::-webkit-input-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li input[type="text"]:-moz-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li input[type="text"]::-moz-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li input[type="text"]:-ms-input-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li input[type="text"]:focus::-webkit-input-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li input[type="text"]:focus:-moz-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li input[type="text"]:focus::-moz-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li input[type="text"]:focus:-ms-input-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li textarea {
+  display: inline-block;
+  vertical-align: top;
+  width: 90%;
+  background: none;
+  padding: 10.33333385px 2%;
+  resize: none;
+  border: 0;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  text-align: left;
+  height: auto;
+  min-height: 170px;
+  margin: 0;
+  font-size: inherit;
+  font-weight: bold;
+  color: black;
+  font-family: inherit;
+  -webkit-transition: border-bottom 0.35s ease;
+  transition: border-bottom 0.35s ease;
+}
+/*form.contact-form ul li textarea:hover {
+  outline: none;
+  box-shadow: 0px 2px 0px #999999, 0px 0px 0px #ffffff;
+}
+form.contact-form ul li textarea:focus {
+  outline: none;
+  border-bottom: 3px solid #999999;
+}
+form.contact-form ul li textarea::-webkit-scrollbar {
+  width: 4px;
+}
+form.contact-form ul li textarea::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 2px;
+}
+form.contact-form ul li textarea::-webkit-input-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li textarea:-moz-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li textarea::-moz-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li textarea:-ms-input-placeholder {
+  -webkit-transition: color 0.35s ease;
+  transition: color 0.35s ease;
+  color: #999999;
+}
+form.contact-form ul li textarea:focus::-webkit-input-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li textarea:focus:-moz-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li textarea:focus::-moz-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li textarea:focus:-ms-input-placeholder {
+  font-size: 12px;
+}
+form.contact-form ul li input[type="submit"] {
+  margin: 15px auto 15px;
+  padding: 10.33333385px 19.375px;
+  #border: 1px solid #ef767a;
+  display: inline-block;
+  border-radius: 6px;
+  background: black;
+  font-weight: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-variant:small-caps;
+  color: white;
+  -webkit-transition: background border 0.35s ease;
+  transition: background border 0.35s ease;
+}
+form.contact-form ul li input[type="submit"]:focus {
+  outline: none;
+  border: 1px solid #f7bbbd;
+}
+form.contact-form ul li input[type="submit"]:hover {
+  background: white;
+  color: black;
+  #border: 1px solid #f7bbbd;
+}
+form.contact-form ul li input[type="submit"]:active {
+  background: #d0d0d0;
+}*/

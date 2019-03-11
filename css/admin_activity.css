@@ -1,0 +1,174 @@
+﻿body {
+    background-color: #f6f6f6;
+	background-size: auto;
+	background-position: center;
+	font-size: 16px;
+    padding-top: 50px;
+}
+
+p {
+    margin-left: 1%;
+    font-family: 'Acme', sans-serif;
+    font-size: 120%;
+}
+
+.fonter {
+    font-family: 'Acme', sans-serif;
+    font-size: 120%;
+}
+
+.quote {
+    border-left: 5px solid #6a6a6a;
+    padding-left: 5px;
+}
+
+hr.style-seven {
+    overflow: visible; /* For IE */
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+            hr.style-seven:before { /* Not really supposed to work, but does */
+                display: block;
+                content: "";
+                height: 30px;
+                margin-top: -31px;
+                border-style: solid;
+                border-color: black;
+                border-width: 0 0 1px 0;
+                border-radius: 20px;
+            }
+            hr.style-eight {
+                overflow: visible; /* For IE */
+                padding: 0;
+                border: none;
+                border-top: medium double #333;
+                color: #333;
+                text-align: center;
+            }
+            hr.style-eight:after {
+                content: "§";
+                display: inline-block;
+                position: relative;
+                top: -0.7em;
+                font-size: 1.5em;
+                padding: 0 0.25em;
+                background: white;
+            }
+            .Wrap1 {
+                margin-top: 30px;
+            }
+            .border_special {
+                border: 1px solid #6a6a6a;
+                background-color: rgba(90, 97, 105, 0.62);
+            }
+            .Wraper {
+                margin-top: 0px;
+                text-align: center;
+                font-size: 50px;
+                background-color: black;
+                letter-spacing: 5px;
+            }
+            .copyright {
+                text-align: center;
+                background-color: rgba(15, 60, 77, 0.84);
+            }
+            copyright a {
+                color: #f8f9fa;
+            }
+            h1 {
+                font-family: 'Coiny', cursive;
+                font-size: 250%;
+            }
+            h2 {
+                font-family: 'Coiny', cursive;
+                font-size: 200%;
+            }
+            .container {
+                min-width: 97%;
+            }
+            .navbar-dark .navbar-toggler {
+                color: white;
+                border-color: rgba(255,255,255,.1);
+            }
+            .navbar-dark .navbar-nav .nav-link {
+                color: aliceblue;
+            }
+            .navbar {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 99;
+            }
+			/*.navbar ul {
+			  list-style-type: none;
+			  margin: 0;
+			  padding: 0;
+			  overflow: hidden;
+			  background-color: #dddddd;
+			}
+
+			.navbar li {
+			  float: left;
+			}
+
+			.navbar li a {
+			  display: block;
+			  padding: 8px;
+			}*/
+footer {
+    background-color: black;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+
+footer a{
+	font-size: 22px;
+	color: white;
+}
+
+footer a:hover{
+	color: aliceblue;
+}
+
+.contact-us button {
+	background-color: #000;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin-top: 1.5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.contact-us img{
+	margin: 60px 32px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	/*width: 50%;*/
+}
+
+.contact-us .options{
+	position: absolute;
+	margin-left: 33%;
+	margin-right: 25%;
+}
+
+.contact-us button:hover{
+	box-shadow: 0px 4px 16px #666;
+	opacity: 1;
+}
+
+.contact-us .options a{
+	color: white;
+}
