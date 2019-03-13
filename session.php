@@ -2,7 +2,7 @@
 	session_start();
 	function logged_in() 
 	{
-		return isset( $_SESSION['Email_Id'] );
+		return isset($_SESSION['user_id'] );
 	}
 	
 	function confirm_logged_in() 

@@ -264,6 +264,59 @@ function lname_out(){
 		return false;
 	}
 }
+
+function city_out(){
+	var x = document.forms["signup"]["city"].value;
+	var x_len=x.length;
+	var regex=/^[0-9]+$/;
+    if (x.match(regex))
+	{
+		document.forms["signup"]["city"].style.border ="0.5px solid red";
+		document.forms["signup"]["city"].value ="";
+		document.forms["signup"]["city"].placeholder = "please enter a valid city";
+		return false;
+	}
+	if (x == "") {
+        document.forms["signup"]["city"].placeholder = "City name must be filled";
+		document.forms["signup"]["city"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+	var i=0;
+	for(i=0;i<x_len;i++)
+	{
+		if(x[i]>='0'&&x[i]<='9')
+		{
+			document.forms["signup"]["city"].placeholder = "Invalid City";
+		document.forms["signup"]["city"].style.border ="0.5px solid red";
+		return false;
+		}
+	}
+	if(x_len < 3 || x_len >20)
+	{
+		alert("City name must be between 3 and 20 characters!")
+		return false;
+	}
+}
+
+/*function contact_out(){
+	var x = document.forms["signup"]["contact"].value;
+	var x_len=x.length;
+	var regex=/[0-9]+$/;
+    if (x.match(regex))
+	{
+		document.forms["signup"]["contact"].style.border ="0.5px solid red";
+		document.forms["signup"]["contact"].value ="";
+		document.forms["signup"]["contact"].placeholder = "please enter a valid contact";
+		return false;
+	}
+	if (x == "") {
+        document.forms["signup"]["contact"].placeholder = "Contact must be filled";
+		document.forms["signup"]["contact"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+}
 /*
 function fname_check()
 {

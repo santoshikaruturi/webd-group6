@@ -97,7 +97,7 @@
 		</tr>
 		<tr>
 			<td>City: </td>
-			<td><input type="text" name="city" id="city" maxlength="30"> </input><br></td>
+			<td><input type="text" name="city" id="city" onblur="city_out() maxlength="30"> </input><br></td>
 		</tr>
 		<tr>
 			<td>Pincode: </td>

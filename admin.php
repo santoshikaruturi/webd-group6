@@ -1,78 +1,63 @@
 <?php 
 	
 	require_once("connections.php");
-
 	require_once("session.php");
 ?>
 	
 <?php
 	if(!confirm_logged_in()) header("Location: admin_login.php");
-	$query = "Select f_name,l_name,email,m_no,regn from student_details WHERE status=0";
+	$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
 	$result = mysqli_query($connection,$query);
 	
 ?>	
 
 <?php
 	global $message1;
-	
 	$message1="";
 
 	 // print_r($_SESSION);
 	if(isset($_POST['Accept']))
 	{
 		$count=0;
-	
 		while($row = mysqli_fetch_assoc($result))
 		{
 			$email = $row['email'];
 			echo $email;
-
-			
-				$count = $count+1;
-				
-				$query = "SELECT * FROM student_details ";
-			    $query .= "WHERE email = '{$email}' ";
-				
-			    $result_set = mysqli_query($connection,$query);
-			  
-
-			    if (mysqli_num_rows($result_set)==1)
-			    {
-			    	$query2 = "UPDATE student_details SET status=1 WHERE email = '{$email}' ";
-				
-			    	$result_set2 = mysqli_query($connection,$query2);
-			    	confirm_query($result_set2);
-			    }
-			
-		}
-		
-		
-	 $message1 = 'Selected students Accepted';
+			$count = $count+1;	
+			$query = "SELECT * FROM student_details ";
+		    $query .= "WHERE email = '{$email}' ";		
+			$result_set = mysqli_query($connection,$query); 
+			if(mysqli_num_rows($result_set)==1)
+		    {
+		    	$query2 = "UPDATE student_details SET status=1 WHERE email = '{$email}' ";
+		    	$result_set2 = mysqli_query($connection,$query2);
+				//confirm_query($result_set2);
+			}
+		}	
+		$message1 = 'Selected students Accepted';
 	}
-	if(isset($_POST['Delete'])){
+	
+	if(isset($_POST['Delete']))
+	{
 		$count1=0;
 		while($row = mysqli_fetch_assoc($result))
 		{
 			$email = $row['email'];
-			
-				$count1 = $count1+1;
-				// echo $index;
-				// print_r($_POST);
-				$query = "SELECT * FROM student_details ";
-			    $query .= "WHERE email = '{$email}' ";
-			    $result_set = mysqli_query($connection,$query);
-			    confirm_query($result_set);
-
-			    if (mysqli_num_rows($result_set)==1)
-			    {
-			    	$query2 = "DELETE FROM student_details ";
-			    	$query2 .= "WHERE email = '{$email}' ";
-			    	$result_set2 = mysqli_query($connection,$query2);
-			    	confirm_query($result_set2);
-			    }
-			
+			$count1 = $count1+1;
+			// echo $index;
+			// print_r($_POST);
+			$query = "SELECT * FROM student_details ";
+			$query .= "WHERE email = '{$email}' ";
+		    $result_set = mysqli_query($connection,$query);
+		    //confirm_query($result_set);
+			if(mysqli_num_rows($result_set)==1)
+		    {
+		    	$query2 = "DELETE FROM student_details ";
+		    	$query2 .= "WHERE email = '{$email}' ";
+			   	$result_set2 = mysqli_query($connection,$query2);
+			   	//confirm_query($result_set2);
+		    }
 		}
-	
 		if($count1<=0)  $message1 = 'No students were selected to delete';
 		else $message1= 'Selected students are deleted';
 	}
@@ -113,19 +98,25 @@
 					<li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="#"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                    </li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
 	  
-	  <section>
+	  <br>
+	  <br>
 	  
+	  <section>
 			<form action="admin.php" method="POST">
 				<table align="left" style="color: white;">
 				<tr>
-				<th><h4> <?php echo $message1; ?></h4> </th>
+				<strong><h4 style="color:white; padding:0px 510px;"> <?php echo $message1; ?></h4> </strong>
 				</tr>
+				<tr><br/></tr>
 				</table>
 				<table style="color: #CCCCCC;" align="center" border="1px" bordercolor="white" cellpadding="10" >
 					<tr>
@@ -136,6 +127,14 @@
 					</tr>	
 
 					<?php 
+					
+						if(!$result) {?>
+							<h4><strong style="color:white; padding:0px 550px;"><?php echo "No new student entry"; ?> </strong> </h4>
+							<br>
+							
+						<?php }
+						else
+						{
 						while($row=mysqli_fetch_assoc($result)){
 					?>
 						<tr>
@@ -143,10 +142,10 @@
 							<td> <?php 	echo $row['email']; ?> </td>
 							<td> <?php 	echo $row['regn']; ?> </td>
 							<td> <?php 	echo $row['m_no']; ?> </td>
-							<td> <input type="checkbox" name="<?php echo $row['email'] ?>"> </td>
+							<td> <input type="checkbox" name="<?php echo $row['id'] ?>"> </td>
 						</tr>	
 
-					<?php } ?>
+						<?php } } ?>
 						</table>
 						<br><br>
 						<table align="center">
@@ -158,9 +157,25 @@
 					
 				
 			</form>
-	 
 	  </section>
-</body>
+	  
+	  <section>
+        <footer>
+            <div class="Wraper">
+				<a class="fb-ic" href="https://www.facebook.com/nitdgp.unofficial">
+				  <i class="fa fa-facebook"> </i>
+				</a>
+				<a class="tw-ic" href="mailto:director@admin.nitdgp.ac.in">
+				  <i class="fa fa-envelope"> </i>
+				</a>
+            </div>
+        </footer>
+      </section>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
 </html>
 
 

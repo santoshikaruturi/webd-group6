@@ -9,11 +9,12 @@
 		{
 			header("Location: profile.php");
 		}
-		
+		//$user_id=$_POST['id'];
+		$username=$_POST['username'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
-		$query = "SELECT email,pwd FROM admin WHERE email = '{$email}' AND pwd = '{$password}' ";
+	$query = "SELECT * FROM admin WHERE username='{$username}' AND email = '{$email}' AND pwd = '{$password}' ";
 		//$query .= "WHERE email = '{$Email_Id}' ";
 		//$query .= "AND pwd = '{$password}' ";
 		$result_set = mysqli_query($connection,$query);
@@ -29,7 +30,9 @@
 		if (mysqli_num_rows($result_set)==1)
 		{
 			$found_user = mysqli_fetch_array($result_set);
-			//$_SESSION['user_id'] = $found_user['id'];
+			$_SESSION['user_id'] = $found_user['id'];
+			echo $_SESSION['user_id'];
+			$_SESSION['username'] = $found_user['username'];
 			$_SESSION['Email_Id'] = $found_user['email'];
 			header("Location: admin.php");
 		} 

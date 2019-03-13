@@ -47,6 +47,10 @@
 				</thead>
 				<br>
 				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" required /></td>
+				</tr>
+				<tr>
 					<td>Email ID:</td>
 					<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
 				</tr>
