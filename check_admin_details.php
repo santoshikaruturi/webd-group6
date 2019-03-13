@@ -31,7 +31,7 @@
 			$found_user = mysqli_fetch_array($result_set);
 			//$_SESSION['user_id'] = $found_user['id'];
 			$_SESSION['Email_Id'] = $found_user['email'];
-			header("Location: profile.php");
+			header("Location: admin.php");
 		} 
 		else 
 		{

@@ -27,6 +27,7 @@
 		$ug_board=$_POST["ug_board"];
 		$ug_cgpa=$_POST["ug_cgpa"];
 		$ug_yrofpassing=$_POST["ug_yrofpassing"];
+		
 		$course=$_POST["btech"];
 		$branch=$_POST["branch"];
 		$regn=$_POST["regn"];
@@ -41,6 +42,7 @@
 		$checkrows1=mysqli_num_rows($check1);
 		$check2=mysqli_query($connection,$query2);
 		$checkrows2=mysqli_num_rows($check2);
+		
 				
 		if($checkrows1>0 || $checkrows2>0) 
 		{ ?>
@@ -110,11 +112,12 @@
 		<?php }
 		else 
 		{  
-			$query = "INSERT INTO student_details(f_name,l_name,dob,gender,m_no,p_addr,pm_addr,city,pin,state,country,course,branch,regn,roll_no,email,pwd,status) VALUES ('$f_name','$l_name','$dob','gender','$m_no','$p_adrr','$pm_adrr','$city','$pin','$state','$country','$course','$branch','$regn','$roll_no','$email','$pwd',0)";
-			//echo $query;
+			$query = "INSERT INTO student_details(f_name,l_name,dob,gender,m_no,p_addr,pm_addr,city,pin,state,country,ClassX_Board,ClassX_Percentage,ClassX_YrOfPassing,ClassXII_Board,ClassXII_Percentage,ClassXII_YrOfPassing,ug_board,ug_cgpa,ug_yrofpassing,course,branch,regn,roll_no,email,pwd,status,dp) VALUES ('$f_name','$l_name','$dob','$gender','$m_no','$p_adrr','$pm_adrr','$city','$pin','$state','$country','$ClassX_Board','$ClassX_Percentage','$ClassX_YrOfPassing','$ClassXII_Board','$ClassXII_Percentage','$ClassXII_YrOfPassing','$ug_board','$ug_cgpa','$ug_yrofpassing','$course','$branch','$regn','$roll_no','$email','$pwd',0,'$dp')";
+			echo $query;
+			$result=NULL;
 			$result = mysqli_query($connection,$query);
 			
-			//echo $result;
+			echo $result;
 			
 			if(!$result)
 			{
@@ -122,7 +125,7 @@
 				//die("<b><b>Registration Failed.</b></b>");
 				?>
 			<!--$message = "<h2>User with same registration number already exists.Try again with a different registration number</h2>";
-			die("<b><h2>User with same registration number already exists.Try again with a different registration number</h2></b>");-->
+			die("<b><h2>User with same registration number already exists.Try again with a different registration number</h2></b>");->
 			
 			<!Doctype.html>
 			<html>
@@ -182,7 +185,7 @@
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 					<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 				</body>
-			</html>
+			</html>-->
 			
 		<?php 
 			}
@@ -198,3 +201,4 @@
 		mysqli_close($connection);
 	}
 ?>
+
