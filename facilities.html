@@ -1,21 +1,12 @@
-<?php
-	require_once("connections.php");
-	require_once("session.php");
-	
-	if(logged_in())
-		header("Location: admin_home.php");
-?>
-
-
 <!Doctype.html>
 <html>
     <head>
-        <title>Webd Project</title>
+        <title>About</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
+       <!-- <link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/home.css"/>
-        <link rel="stylesheet" href="css/student_login.css"/>
+        <link rel="stylesheet" href="css/student_regn.css"/>
     </head>
     <body>
 	  <section>
@@ -28,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="About.html">About</a>
                     </li>
 					<li class="nav-item">
                         <a class="nav-link" href="dept.html">Departments</a>
@@ -44,40 +35,29 @@
             </div>
         </nav>
 	  </section>
-	
-	  <section class="login_form">
-		   <div class="container">
-			<form name="login" action="check_admin_details.php" method="post">
-			<table>
-				<thead>
-					<tr>
-						<td><h3>Login Details:</h3></td>
-					</tr>
-				</thead>
+	  
+	  <br>
+	  <br>
+		
+	  <section class="dept">
+		<div class="container" style="color:white">
+			<h1 style="text-align:center"> Facilities </h1>
+			<p>
+				Name and brief of facilities we have.
 				<br>
-				<tr>
-					<td>Username:</td>
-					<td><input type="text" name="username" required /></td>
-				</tr>
-				<tr>
-					<td>Email ID:</td>
-					<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type="password" name="password" required /></td>
-				</tr>
-			</table>
-			<table>
-			  <tr>
-				<td><input type="reset" value="Reset"></input> <br></td>
-				<td><input type="submit" value="Submit" name="submit"></input> <br></td>
-			  <tr>
-			</table>
-			</form>
-			</div>
+				Developing writers can often benefit from examining an essay, a paragraph, or even a sentence to determine what makes it effective. On the following pages are several paragraphs for you to evaluate on your own, along with the Writing Center's explanation.
+
+Note: These passages are excerpted from actual student papers and retain the original wording. Some of the sentences are imperfect, but we have chosen these passages to highlight areas in which the author was successful.
+
+Thanks to the students who provided their writing for this page of our website.Developing writers can often benefit from examining an essay, a paragraph, or even a sentence to determine what makes it effective. On the following pages are several paragraphs for you to evaluate on your own, along with the Writing Center's explanation.
+
+Note: These passages are excerpted from actual student papers and retain the original wording. Some of the sentences are imperfect, but we have chosen these passages to highlight areas in which the author was successful.
+
+Thanks to the students who provided their writing for this page of our website.
+			</p>
+		</div>	  
 	  </section>
-	
+		
 	  <section>
         <footer>
             <div class="Wraper">

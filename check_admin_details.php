@@ -7,7 +7,7 @@
 	{
 		if (logged_in()) 
 		{
-			header("Location: profile.php");
+			header("Location: admin_home.php");
 		}
 		//$user_id=$_POST['id'];
 		$username=$_POST['username'];
@@ -31,10 +31,11 @@
 		{
 			$found_user = mysqli_fetch_array($result_set);
 			$_SESSION['user_id'] = $found_user['id'];
-			echo $_SESSION['user_id'];
+			//echo $_SESSION['user_id'];
+			//$_SESSION['login']=1;
 			$_SESSION['username'] = $found_user['username'];
 			$_SESSION['Email_Id'] = $found_user['email'];
-			header("Location: admin.php");
+			header("Location: admin_home.php");
 		} 
 		else 
 		{
@@ -50,7 +51,7 @@
 					<title>Webd Project</title>
 					<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 					<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-					<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">
+					<!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
 					<link rel="stylesheet" href="css/home.css"/>
 					<link rel="stylesheet" href="css/student_regn.css"/>
 				</head>
@@ -65,16 +66,16 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
 								<li class="nav-item">
-									<a class="nav-link" href="#">About</a>
+									<a class="nav-link" href="about.html">About</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Departments</a>
+									<a class="nav-link" href="dept.html">Departments</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Facilities</a>
+									<a class="nav-link" href="facilities.html">Facilities</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Contact</a>
+									<a class="nav-link" href="contact.html">Contact</a>
 								</li>
 							</ul>
 						</div>

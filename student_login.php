@@ -1,10 +1,18 @@
+<?php
+	require_once("connections.php");
+	require_once("session.php");
+	
+	if(logged_in())
+		header("Location: profile.php");
+?>
+
 <!Doctype.html>
 <html>
     <head>
         <title>Webd Project</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_login.css"/>
     </head>
@@ -19,16 +27,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#">Departments</a>
+                        <a class="nav-link" href="dept.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#">Facilities</a>
+                        <a class="nav-link" href="facilities.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -55,6 +63,13 @@
 					<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /></td>
 				</tr>
 			</table>
+			<br>
+			<table>
+			  <tr>
+				<td><a href="forgot_password.php"> Forgot Password? </a> <br></td>
+			  <tr>
+			</table>
+			<br>
 			<table>
 			  <tr>
 				<td><input type="reset" value="Reset"></input> <br></td>

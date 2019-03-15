@@ -8,12 +8,17 @@
 	if(!confirm_logged_in()) header("Location: admin_login.php");
 	$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
 	$result = mysqli_query($connection,$query);
+	if(!mysqli_num_rows($result))
+		$flag=1;
+	else
+		$flag=0;
 	
 ?>	
 
 <?php
 	global $message1;
 	$message1="";
+	$checked=array();
 
 	 // print_r($_SESSION);
 	if(isset($_POST['Accept']))
@@ -33,8 +38,18 @@
 		    	$result_set2 = mysqli_query($connection,$query2);
 				//confirm_query($result_set2);
 			}
-		}	
-		$message1 = 'Selected students Accepted';
+		}
+		if($count<=0)  
+			$message1 = 'No students were selected to accept';
+		else 
+			$message1 = 'Selected students Accepted';
+		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
+		$result = mysqli_query($connection,$query);
+		if($flag==1)
+		{
+			$message1="No new student entry";
+			$flag=0;
+		}
 	}
 	
 	if(isset($_POST['Delete']))
@@ -60,6 +75,8 @@
 		}
 		if($count1<=0)  $message1 = 'No students were selected to delete';
 		else $message1= 'Selected students are deleted';
+		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
+		$result = mysqli_query($connection,$query);
 	}
 
 	#$query = "Select f_name,l_name,email,m_no,regn_no from student_details WHERE status=0";
@@ -72,7 +89,7 @@
         <title>Webd Project</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_login.css"/>
     </head>
@@ -80,23 +97,26 @@
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="home_signup.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="admin_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#">Departments</a>
+                        <a class="nav-link" href="dept.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#">Facilities</a>
+                        <a class="nav-link" href="facilities.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="admin_logout">Logout</a>
                     </li>
 					<li class="nav-item">
                         <a class="nav-link" href="#"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
@@ -111,7 +131,7 @@
 	  <br>
 	  
 	  <section>
-			<form action="admin.php" method="POST">
+			<form action="admin_home.php" method="POST">
 				<table align="left" style="color: white;">
 				<tr>
 				<strong><h4 style="color:white; padding:0px 510px;"> <?php echo $message1; ?></h4> </strong>
@@ -126,14 +146,13 @@
 						<th> <i> Mobile No. </i></th>
 					</tr>	
 
-					<?php 
-					
-						if(!$result) {?>
-							<h4><strong style="color:white; padding:0px 550px;"><?php echo "No new student entry"; ?> </strong> </h4>
-							<br>
+					<!--?php 
+						if(!mysqli_num_rows($result)) {?>
+							<h4><strong style="color:white; padding:0px 550px;"><?php echo $message1; ?> </strong> </h4>
+							<br>-->
 							
-						<?php }
-						else
+						<?php 
+						
 						{
 						while($row=mysqli_fetch_assoc($result)){
 					?>
@@ -145,17 +164,16 @@
 							<td> <input type="checkbox" name="<?php echo $row['id'] ?>"> </td>
 						</tr>	
 
-						<?php } } ?>
+						<?php	
+						}	} ?>
 						</table>
-						<br><br>
+						<br> <br>
 						<table align="center">
 							<tr>
 							 <th><input type="submit" align="center" name="Accept" value="Accept entries"> </th>
 							<th> <input type="submit" align="center" name="Delete" value="Delete entries"> </th>
 							</tr>
 						</table>
-					
-				
 			</form>
 	  </section>
 	  

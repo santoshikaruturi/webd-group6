@@ -1,27 +1,22 @@
-<?php
-	require_once("connections.php");
-	require_once("session.php");
-	
-	if(logged_in())
-		header("Location: admin_home.php");
-?>
-
-
 <!Doctype.html>
+<?php 
+	require_once("connections.php") ;
+	require_once("session.php");
+?>
 <html>
     <head>
         <title>Webd Project</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
-        <link rel="stylesheet" href="css/home.css"/>
-        <link rel="stylesheet" href="css/student_login.css"/>
+        <link rel="stylesheet" href="css/admin_home.css"/>
+        <link rel="stylesheet" href="css/student_regn.css"/>
     </head>
     <body>
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="home_signup.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="admin_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -39,45 +34,69 @@
 					<li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="admin_logout.php">Logout</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                    </li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
-	
-	  <section class="login_form">
-		   <div class="container">
-			<form name="login" action="check_admin_details.php" method="post">
-			<table>
-				<thead>
-					<tr>
-						<td><h3>Login Details:</h3></td>
-					</tr>
-				</thead>
-				<br>
-				<tr>
-					<td>Username:</td>
-					<td><input type="text" name="username" required /></td>
-				</tr>
-				<tr>
-					<td>Email ID:</td>
-					<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type="password" name="password" required /></td>
-				</tr>
-			</table>
-			<table>
-			  <tr>
-				<td><input type="reset" value="Reset"></input> <br></td>
-				<td><input type="submit" value="Submit" name="submit"></input> <br></td>
-			  <tr>
-			</table>
-			</form>
+		
+	  <section>
+		<div class="contact-us" class="section scrollspy">
+			<img src="img/img1.jpg" alt="logo" width="250px" height="250px"></img>
+			<div class="options">
+				<button type="button"><a href="admin_accept_delete.php"> Accept or Delete new accounts </a></button>
+				<button type="button"><a href=""> Delete existing accounts </a></button>
+				<button type="button"><a href=""> Update existing accounts </a></button>
 			</div>
+			<!--<form action="mail.php" method="post" class="contact-form">
+				<div id="contact" class="section scrollspy"><span>Sign Up as Student</span></div>
+				<ul>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="name" placeholder="Name" required autocomplete="off" />
+					</li>
+					<li>
+						<label for="email"></label>
+						<input type="text" name="email" placeholder="Email" required autocomplete="off" />
+					</li>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="password" placeholder="Password" required autocomplete="off" />
+					</li>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="contact" placeholder="Contact No." required autocomplete="off" />
+					</li>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="branch" placeholder="Branch" required autocomplete="off" />
+					</li>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="roll" placeholder="Roll No." required autocomplete="off" />
+					</li>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="address" placeholder="Address" required autocomplete="off" />
+					</li>
+					<li>
+						<label for="name"></label>
+						<input type="text" name="dob" placeholder="Date of Birth" required autocomplete="off" />
+					</li>
+					<li>
+						<input type="submit" value="Submit" placeholder="Submit" />
+					</li>
+				</ul>
+				</form>-->
+		</div>
 	  </section>
-	
+		
 	  <section>
         <footer>
             <div class="Wraper">
