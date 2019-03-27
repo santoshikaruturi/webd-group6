@@ -1,20 +1,3 @@
-/*alert("hv");
-
-function validateForm() {
-  var x = document.forms["myForm"]["fname"].value;
-  var fname = document.forms["myForm"]["f_name"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
-  if (fname == "") 
-	{
-		alert("F_name must be filled out");
-		return false;
-	}
-	else 
-		alert("First name filled correctly");
-}*/
 
 function check()
 {
@@ -29,7 +12,7 @@ function check()
 	var pin = document.forms["signup"]["pin"].value;
 	var state = document.forms["signup"]["state"].value;
 	var country = document.forms["signup"]["country"].value;
-	
+	var branch= document.forms["signup"]["branch"].value;
 	var ClassX_Percentage = document.forms["signup"]["ClassX_Percentage"].value;
 	var ClassXII_Percentage = document.forms["signup"]["ClassXII_Percentage"].value;
 	var ug_cgpa = document.forms["signup"]["ug_cgpa"].value;
@@ -84,7 +67,7 @@ function check()
 	
 	if ((city == ""))
 	{
-		alert("City name must be filled out");
+		alert("city name must be filled out");
 		return false;
 	}
 	if (!city.match(/^[a-zA-Z]+$/)) 
@@ -106,7 +89,7 @@ function check()
 	
 	if ((state == ""))
 	{
-		alert("State name must be filled out");
+		alert("state name must be filled out");
 		return false;
 	}
 	if (!state.match(/^[a-zA-Z ]+$/)) 
@@ -117,7 +100,7 @@ function check()
 	
 	if ((country == ""))
 	{
-		alert("Country name must be filled out");
+		alert("country name must be filled out");
 		return false;
 	}
 	if (!country.match(/^[a-zA-Z]+$/)) 
@@ -265,6 +248,76 @@ function lname_out(){
 	}
 }
 
+
+function state_out(){
+	var x = document.forms["signup"]["state"].value;
+	var x_len=x.length;
+	var regex=/^[0-9]+$/;
+    if (x.match(regex))
+	{
+		document.forms["signup"]["state"].style.border ="0.5px solid red";
+		document.forms["signup"]["state"].value ="";
+		document.forms["signup"]["state"].placeholder = "please enter a valid name";
+		return false;
+	}
+	if (x == "") {
+        document.forms["signup"]["state"].placeholder = "state_name must be filled";
+		document.forms["signup"]["state"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+    var i=0;
+	for(i=0;i<x_len;i++)
+	{
+		if(x[i]>='0'&&x[i]<='9')
+		{
+			document.forms["signup"]["state"].placeholder = "Invalid Name";
+		document.forms["signup"]["state"].style.border ="0.5px solid red";
+		return false;
+		}
+	}
+	
+	if(x_len < 5 || x_len >20)
+	{
+		alert("Name must be between 5 and 20 characters!")
+		return false;
+	}
+}
+
+function coun_out(){
+	var x = document.forms["signup"]["country"].value;
+	var x_len=x.length;
+	var regex=/^[0-9]+$/;
+    if (x.match(regex))
+	{
+		document.forms["signup"]["country"].style.border ="0.5px solid red";
+		document.forms["signup"]["country"].value ="";
+		document.forms["signup"]["country"].placeholder = "please enter a valid name";
+		return false;
+	}
+	if (x == "") {
+        document.forms["signup"]["country"].placeholder = "country must be filled";
+		document.forms["signup"]["country"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+    var i=0;
+	for(i=0;i<x_len;i++)
+	{
+		if(x[i]>='0'&&x[i]<='9')
+		{
+			document.forms["signup"]["country"].placeholder = "Invalid Name";
+		document.forms["signup"]["country"].style.border ="0.5px solid red";
+		return false;
+		}
+	}
+	
+	if(x_len < 5 || x_len >20)
+	{
+		alert("Name must be between 5 and 20 characters!")
+		return false;
+	}
+}
 function city_out(){
 	var x = document.forms["signup"]["city"].value;
 	var x_len=x.length;
@@ -273,63 +326,166 @@ function city_out(){
 	{
 		document.forms["signup"]["city"].style.border ="0.5px solid red";
 		document.forms["signup"]["city"].value ="";
-		document.forms["signup"]["city"].placeholder = "please enter a valid city";
+		document.forms["signup"]["city"].placeholder = "please enter a valid city name";
 		return false;
 	}
 	if (x == "") {
-        document.forms["signup"]["city"].placeholder = "City name must be filled";
+        document.forms["signup"]["city"].placeholder = "city_name must be filled";
 		document.forms["signup"]["city"].style.border ="0.5px solid red";
 		return false;
     
     }
-	var i=0;
+    var i=0;
 	for(i=0;i<x_len;i++)
 	{
 		if(x[i]>='0'&&x[i]<='9')
 		{
-			document.forms["signup"]["city"].placeholder = "Invalid City";
+			document.forms["signup"]["city"].placeholder = "Invalid Name";
 		document.forms["signup"]["city"].style.border ="0.5px solid red";
 		return false;
 		}
 	}
-	if(x_len < 3 || x_len >20)
+	
+	if(x_len < 5 || x_len >20)
 	{
-		alert("City name must be between 3 and 20 characters!")
+		alert("Name must be between 5 and 20 characters!")
 		return false;
 	}
 }
 
-/*function contact_out(){
-	var x = document.forms["signup"]["contact"].value;
-	var x_len=x.length;
-	var regex=/[0-9]+$/;
-    if (x.match(regex))
+function dob_out(){
+	var x = document.forms["signup"]["dob"].value;
+	if(x=="")
 	{
-		document.forms["signup"]["contact"].style.border ="0.5px solid red";
-		document.forms["signup"]["contact"].value ="";
-		document.forms["signup"]["contact"].placeholder = "please enter a valid contact";
+		alert("Please enter a date");
+	}
+	return false;
+}
+
+
+function pin_out()
+{
+	var x = document.forms["signup"]["pin"].value;
+	var regex=/^[0-9]+$/;
+	if (x == "") {
+        document.forms["signup"]["pin"].placeholder = "can't leave this empty";
+		document.forms["signup"]["pin"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+	
+	if (!x.match(regex))
+	{
+		document.forms["signup"]["pin"].value = "";
+		document.forms["signup"]["pin"].placeholder = "enter valid pin";
+		document.forms["signup"]["pin"].style.border ="0.5px solid red"
+	}
+}
+
+function email_out(){
+	var x = document.forms["signup"]["email"].value;
+	if(x=="")
+	{
+		document.forms["signup"]["email"].placeholder = "email can't be empty";
+		document.forms["signup"]["email"].style.border ="0.5px solid red";
 		return false;
 	}
+	var x = document.forms["signup"]["email"].value;
+	var regex = new RegExp('[A-Za-z0-9_+\.~!#%&]+@[A-Za-z0-9_+\.~!#%&]+\.[A-Za-z0-9_+\.~!#%&]+');
+	if (!x.match(regex))
+	{
+		alert("Invalid Email id");
+		return false;
+	}
+	return true;
+}
+
+
+function pass_out(){
+	var x = document.forms["signup"]["password"].value;
+	var x_len=x.length;
 	if (x == "") {
-        document.forms["signup"]["contact"].placeholder = "Contact must be filled";
+        document.forms["signup"]["password"].placeholder = "password must be filled";
+		document.forms["signup"]["password"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+	if(x_len < 8 || x_len >20)
+	{
+		alert("Please enter the password in range of 8-20 characters");
+		return false;
+		
+	}
+}
+
+
+function con_pass_out(){
+	var x = document.forms["signup"]["c_password"].value;
+	var y = document.forms["signup"]["password"].value;
+	if (x == "") {
+        document.forms["signup"]["c_password"].placeholder = "please re-type password";
+		document.forms["signup"]["c_password"].style.border ="0.5px solid red";
+		return false;
+    
+    }
+	if(x!=y)
+	{
+		alert("passwords do not match!!");
+		return false;
+	}
+}
+
+
+function contact_out(){
+	var x = document.forms["signup"]["contact"].value;
+	var len=x.length;
+	var regex=/^[0-9]+$/;
+	if (x == "") {
+        document.forms["signup"]["contact"].placeholder = "can't leave this empty";
 		document.forms["signup"]["contact"].style.border ="0.5px solid red";
 		return false;
     
     }
-}
-/*
-function fname_check()
-{
-	alert("hey");
-	/*var fname = document.forms["signup"]["f_name"].value;
-	if ((fname == ""))
+	if(len!=10)
 	{
-		alert("First name must be filled out");
+		document.forms["signup"]["contact"].value = "";
+		document.forms["signup"]["contact"].placeholder = "enter valid number";
+		document.forms["signup"]["contact"].style.border ="0.5px solid red";
+	}
+	if (!x.match(regex))
+	{
+		document.forms["signup"]["contact"].value = "";
+		document.forms["signup"]["contact"].placeholder = "enter valid number";
+		document.forms["signup"]["contact"].style.border ="0.5px solid red";
+	}
+	if(x[0]==0)
+	{
+		document.forms["signup"]["contact"].value = "";
+		document.forms["signup"]["contact"].placeholder = "enter valid number";
+		document.forms["signup"]["contact"].style.border ="0.5px solid red";
+	}
+	
+}
+
+function addr_out(){
+	var x = document.forms["signup"]["addr"].value;
+	if(x=="")
+	{
+		document.forms["signup"]["addr"].placeholder = "can't leave this empty";
+		document.forms["signup"]["addr"].style.border ="0.5px solid red";
 		return false;
 	}
-	if (!fname.match(/^[a-zA-Z]+$/)) 
-    {
-        alert('Only alphabets are allowed');
-        return false;
-    }
-}*/
+	return false;
+}
+
+function address_out(){
+	var x = document.forms["signup"]["address"].value;
+	if(x=="")
+	{
+		document.forms["signup"]["address"].placeholder = "can't leave this empty";
+		document.forms["signup"]["address"].style.border ="0.5px solid red";
+		return false;
+	}
+	return false;
+}
+
