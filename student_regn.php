@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
 		<script type="text/javascript" src="js/validate.js"></script>
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			function check()
 			{
 				var f_name = document.forms["signup"]["f_name"].value;
@@ -21,7 +21,7 @@
 				else 
 					alert("First name filled correctly");
 			}
-		</script>
+		</script>-->
 		
     </head>
     <body>
@@ -72,7 +72,7 @@
 		</tr>
 		<tr>
 			<td>Date of Birth: </td>
-			<td><input type="date" name="dob" id="dob"><br></td>
+			<td><input type="date" name="dob" id="dob" onblur="dob_out()"><br></td>
 		</tr>
 		<tr>
 			<td>Gender: </td>
@@ -82,34 +82,34 @@
 		</tr>
 		<tr>
 			<td>Contact Number: </td>
-			<td><input type="text" name="contact" id="contact" pattern="[1-9]{1}[0-9]{9}" title="Enter the correct mobile number"><br></td>
+			<td><input type="text" name="contact" id="contact"   onblur="contact_out()"></input><br></td>
 		</tr>
 		<tr>
 			<td>Present Address: </td>
-			<td><input type="textarea" name="addr" maxlength="100"></textarea><br></td>
+			<td><input type="textarea" name="addr" maxlength="100" onblur="addr_out()"></textarea><br></td>
 		</tr>
 		<tr>
 			<td align="center"><input type="radio" name="Autofill" value="same" onclick="getaddress()"> Same As<br></td>
 		</tr>
 		<tr>
 			<td>Permanent Address: </td>
-			<td><input type="textarea" name="address" maxlength="100"></textarea><br></td>
+			<td><input type="textarea" name="address" maxlength="100" onblur="address_out()"></textarea><br></td>
 		</tr>
 		<tr>
 			<td>City: </td>
-			<td><input type="text" name="city" id="city" onblur="city_out() maxlength="30"> </input><br></td>
+			<td><input type="text" name="city" id="city" maxlength="30" onblur="city_out()"> </input><br></td>
 		</tr>
 		<tr>
 			<td>Pincode: </td>
-			<td><input type="text" name="pin" id="pin" pattern="[1-9]{1}[0-9]{5}" title="Enter the correct pincode"> </input><br></td>
+			<td><input type="text" name="pin" id="pin" pattern="[1-9]{1}[0-9]{5}" title="Enter the correct pincode" onblur="pin_out()"> </input><br></td>
 		</tr>
 		<tr>
 			<td>State: </td>
-			<td><input type="text" name="state" id="state" maxlength="30"> </input><br></td>
+			<td><input type="text" name="state" id="state" maxlength="30" onblur="state_out()"> </input><br></td>
 		</tr>
 		<tr>
 			<td>Country: </td>
-			<td><input type="text" name="country" id="country" maxlength="30"> </input><br></td>
+			<td><input type="text" name="country" id="country" maxlength="30" onblur="coun_out()"> </input><br></td>
 		</tr>
 		<tr>
 			<td>Profile Picture: </td>
@@ -163,7 +163,7 @@
 				<tr>
 					<td>Branch:</td>
 					<td>
-						<select name="branch" style="width:150px" onfocusout="branch_out()" >
+						<select name="branch" style="width:150px" onblur="branch_out()" >
 							<option value="0">--Select--</option>
 							<option value="BT">Biotechnology</option>
 							<option value="CHE">Chemical Engineering</option>
@@ -183,7 +183,7 @@
 				</tr>
 				<tr>
 					<td>Roll No:</td>
-					<td><input type="text" name="roll_no" maxlength="8" placeholder="eg: 16/IT/01" onclick="getstudentid()" title="eg:16/IT/01" required /></td>
+					<td><input type="text" name="roll_no" maxlength="8" placeholder="eg: 16/IT/01" onclick="getstudentid()" title="eg:16/IT/01" required onblur="getstudentid()"/></td>
 				</tr>
 			</table>
 			
@@ -192,15 +192,15 @@
 		<table>
 			<tr>
 				<td>Email ID:</td>
-				<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
+				<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required onblur="email_out()" /></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
-				<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /></td>
+				<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onblur="pass_out()"/></td>
 			</tr>
 			<tr>
 				<td>Confirm Password: &nbsp;</td>
-				<td><input type="password" name="c_password" required /></td>
+				<td><input type="password" name="c_password" required onblur="con_pass_out()"/></td>
 			</tr>
 		</table>
 			

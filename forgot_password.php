@@ -107,6 +107,10 @@
 	}
 ?>
 
+<br>
+<br>
+<br>
+<br>
 
 <!Doctype.html>
 <html>
@@ -169,7 +173,7 @@
 			<table>
 			  <tr>
 				<td><input type="reset" value="Reset"></input> <br></td>
-				<td><input type="submit" value="Submit" name="submit"></input> <br></td>
+				<td><input type="submit" value="Submit" name="submit" ></input> <br></td>
 			  <tr>
 			</table>
 			</form>
