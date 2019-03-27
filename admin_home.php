@@ -53,6 +53,7 @@
 				<button type="button"><a href="admin_accept_delete.php"> Accept or Delete new accounts </a></button>
 				<button type="button"><a href=""> Delete existing accounts </a></button>
 				<button type="button"><a href=""> Update existing accounts </a></button>
+				<button type="button"><a href="show_accounts.php"> Show all accounts </a></button>
 			</div>
 			<!--<form action="mail.php" method="post" class="contact-form">
 				<div id="contact" class="section scrollspy"><span>Sign Up as Student</span></div>

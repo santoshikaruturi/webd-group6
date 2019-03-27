@@ -1,10 +1,22 @@
+<?php 
+	
+	require_once("connections.php");
+	require_once("session.php");
+?>
+	
+<?php
+	if(!confirm_logged_in()) header("Location: admin_login.php");
+	$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=1";
+	$result = mysqli_query($connection,$query);
+?>
+
 <!Doctype.html>
 <html>
     <head>
         <title>Webd Project</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_login.css"/>
     </head>
@@ -12,7 +24,7 @@
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="home_signup.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="admin_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -30,40 +42,51 @@
 					<li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="admin_logout">Logout</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="#"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                    </li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
 	  
-	  <section class="login_form">
-		   <div class="container">
-			<form name="login" action="forgot_password_script.php" method="post">
-			<table>
-				<thead>
+	  <br>
+	  <br>
+	  
+	  <section>
+			<form action="admin_home.php" method="POST">
+				<table align="left" style="color: white;">
+				<tr><br/></tr>
+				</table>
+				<table style="color: #CCCCCC;" align="center" border="1px" bordercolor="white" cellpadding="10" >
 					<tr>
-						<td><h3>Forgot Password:</h3></td>
-					</tr>
-				</thead>
-				<br>
-				<tr>
-					<td>Email ID:</td>
-					<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
-				</tr>
-				<tr>
-					<td>Registration Number:</td>
-					<td><input type="text" name="regn" pattern="[1-9]{2}[Uu][0-9]{5}" title="Enter the correct format of registration number" required /></td>
-				</tr>
-			</table>
-			<br>
-			<table>
-			  <tr>
-				<td><input type="reset" value="Reset"></input> <br></td>
-				<td><input type="submit" value="Submit" name="submit"></input> <br></td>
-			  <tr>
-			</table>
+						<th> <i> Name </i> </th>
+						<th> <i> Email </i> </th>
+						<th> <i> Registration No. </i> </th>
+						<th> <i> Mobile No. </i></th>
+					</tr>	
+					
+					<?php 
+						{
+						while($row=mysqli_fetch_assoc($result)){
+					?>
+						<tr>
+							<td> <?php 	echo $row['f_name']; ?> <?php echo $row['l_name']; ?></td>
+							<td> <?php 	echo $row['email']; ?> </td>
+							<td> <?php 	echo $row['regn']; ?> </td>
+							<td> <?php 	echo $row['m_no']; ?> </td>
+						</tr>	
+
+						<?php	
+						}	} ?>
+				</table>
+				
+				
 			</form>
-			</div>
 	  </section>
 	  
 	  <section>
@@ -84,3 +107,4 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
 </html>
+
