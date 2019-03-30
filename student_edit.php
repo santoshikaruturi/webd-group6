@@ -1,3 +1,36 @@
+<?php 
+	require_once("connections.php"); 
+	require_once("session.php");
+?>
+
+<?php
+	if(!confirm_logged_in()) redirect_to("student_login.php");
+?>
+
+<?php
+	// echo $_SESSION['Email'];
+	// $index = $_SESSION['user_id'];
+	// $query = "SELECT * FROM student_details ";
+	// $query .= "WHERE email = '$_SESSION['Email']' ";
+	// echo "string";
+	$k=$_SESSION['email'];
+	$query = "SELECT * FROM student_details WHERE email='$k'";
+	$result = mysqli_query($connection,$query);
+	// echo "string1";
+			$row2 = mysqli_fetch_assoc($result);
+			$firstname = $row2['f_name'];
+			// echo $firstname;
+			$lastname = $row2['l_name'];
+			$address = $row2['addr'];
+			$email = $row2['email'];
+			$mobile = $row2['contact'];
+			$nationality = $row2['country'];
+			 // print_r($result_set);
+?>
+
+
+
+
 <!Doctype.html>
 <html>
     <head>
@@ -54,13 +87,13 @@
 		
 	  <section class="signup_form">
 	   <div class="container">
-	    <form name="signup" action="after_student_regn.php" method="post" onsubmit="return check()">
+	    <form name="signup" action="student_update.php" method="post" onsubmit="return check()">
 		<table>
-		<thead>
-		<tr>
+		<!--<thead>
+		<!--<tr>
 			<td><h3>Personal Details:</h3></td>
 		</tr>
-		</thead>
+		</thead>-->
 		<br>
 		<tr>
 			<td>First Name: </td>
@@ -88,14 +121,14 @@
 			<td>Present Address: </td>
 			<td><input type="textarea" name="addr" maxlength="100" onblur="addr_out()"></textarea><br></td>
 		</tr>
-		<tr>
+		<!--<tr>
 			<td align="center"><input type="radio" name="Autofill" value="same" onclick="getaddress()"> Same As<br></td>
-		</tr>
-		<tr>
+		</tr>-->
+		<!--<tr>
 			<td>Permanent Address: </td>
 			<td><input type="textarea" name="address" maxlength="100" onblur="address_out()"></textarea><br></td>
-		</tr>
-		<tr>
+		</tr>-->
+		<!--<tr>
 			<td>City: </td>
 			<td><input type="text" name="city" id="city" maxlength="30" onblur="city_out()"> </input><br></td>
 		</tr>
@@ -107,103 +140,24 @@
 			<td>State: </td>
 			<td><input type="text" name="state" id="state" maxlength="30" onblur="state_out()"> </input><br></td>
 		</tr>
-		<tr>
+		<tr>-->
 			<td>Country: </td>
 			<td><input type="text" name="country" id="country" maxlength="30" onblur="coun_out()"> </input><br></td>
 		</tr>
-		<tr>
+		<!--<tr>
 			<td>Profile Picture: </td>
 			<td><input type="file" name="dp" id="dp" accept="image/*" required> </input><br></td>
-		</tr>
+		</tr>-->
 		
-		</table>
 		<br>
-		<h3>Academic Details:</h3>
-		
-		<table>
-				<!--- Qualification-->
-				<thead>
-					<tr>
-						<td><h5>Qualifications:</h5></td>
-						<td><br></br></td>
-					</tr>
-					<tr>
-						<!--<td align="center"><b>Sl.No.</b></td> !-->
-						<td align="center"><b>Examination</b></td>
-						<td align="center"><b>Board</b></td>
-						<td align="center"><b>Percentage/CGPA</b></td>
-						<td align="center"><b>Year of Passing</b></td>
-					</tr>
-				</thead>
-				<tr>
-					<!--<td align="center">1</td> !-->
-					<td align="center">Class X</td>
-					<td align="center"><input type="text" name="ClassX_Board" maxlength="30" required /></td>
-					<td align="center"><input type="text" name="ClassX_Percentage" maxlength="6" placeholder="Percentage" required /></td>
-					<td align="center"><input type="text" name="ClassX_YrOfPassing" maxlength="4" required /></td>
-				</tr>
-				<tr>
-					<!--<td align="center">2</td> !-->
-					<td align="center">Class XII</td>
-					<td align="center"><input type="text" name="ClassXII_Board" maxlength="30" required /></td>
-					<td align="center"><input type="text" name="ClassXII_Percentage" maxlength="6" placeholder="Percentage" required /></td>
-					<td align="center"><input type="text" name="ClassXII_YrOfPassing" maxlength="4" required /></td>
-				</tr>
-				<tr>
-					<!--<td align="center">3</td> !-->
-					<td align="center">Under Graduation</td>
-					<td align="center"><input type="text" name="ug_board" maxlength="30" required /></td>
-					<td align="center"><input type="text" name="ug_cgpa" maxlength="4" placeholder="CGPA" required /></td>
-					<td align="center"><input type="text" name="ug_yrofpassing" maxlength="4" required /></td>
-				</tr>
-				<tr>
-					<td>Courses Applied:</td>
-					<td><input type="radio" name="btech" value="btech" required /> B.Tech</td>
-				</tr>
-				<tr>
-					<td>Branch:</td>
-					<td>
-						<select name="branch" style="width:150px" onblur="branch_out()" >
-							<option value="0">--Select--</option>
-							<option value="BT">Biotechnology</option>
-							<option value="CHE">Chemical Engineering</option>
-							<option value="CIV">Civil engineering</option>
-							<option value="CSE">Computer Science and engineering</option>
-							<option value="ECE">Electronics and communication Engineering</option>
-							<option value="IT">Information Technology</option>
-							<option value="ME">Mechanical engineering</option>
-							<option value="MME">Metallurgical and materials engineering</option>
-						</select>
-					</td>
-					<td><br></br></td>
-				</tr>
-				<tr>
-					<td>Registration No:</td>
-					<td><input type="text" name="regn" placeholder="eg: 16U10141" maxlength="8" pattern="[1-9]{2}[Uu][0-9]{5}" title="eg: 16u10141" required /></td>
-				</tr>
-				<tr>
-					<td>Roll No:</td>
-					<td><input type="text" name="roll_no" maxlength="11" placeholder="eg: 16/IT/01" onclick="getstudentid()" title="eg:16/IT/01" required /></td>
-				</tr>
-			</table>
 			
 		<br>
-		<h3>Login Details:</h3>
-		<table>
+		<!--<h3>Login Details:</h3>-->
 			<tr>
 				<td>Email ID:</td>
 				<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required onblur="email_out()" /></td>
 			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onblur="pass_out()"/></td>
-			</tr>
-			<tr>
-				<td>Confirm Password: &nbsp;</td>
-				<td><input type="password" name="c_password" required onblur="con_pass_out()"/></td>
-			</tr>
-		</table>
-			
+			</table>
 		<br>
 		<table>
 		  <tr>

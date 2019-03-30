@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
 		<script type="text/javascript" src="js/validate.js"></script>
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			function check()
 			{
 				var f_name = document.forms["signup"]["f_name"].value;
@@ -27,7 +27,7 @@
 				else 
 					alert("First name filled correctly");
 			}
-		</script>
+		</script>-->
 		
     </head>
     <body>
@@ -63,192 +63,58 @@
             </div>
         </nav>
 	  </section>
-		
-	  <section class="signup_form">
-	   <div class="container">
-	    <form name="signup" action="/action.php" method="post">
-		<table>
-		<thead>
-		<tr>
-			<td><h3>Personal Details:</h3></td>
-		</tr>
-		</thead>
-		<br>
-		<tr>
-			<td>First Name: </td>
-			<td><input type="text" name="f_name" maxlength="30" id="f_name" onfocusout="name_out()"><br></td>
-		</tr>
-		<tr>
-			<td>Last Name: </td>
-			<td><input type="text" name="l_name" maxlength="30" id="l_name"><br></td>
-		</tr>
-		<tr>
-			<td>Date of Birth: </td>
-			<td><input type="date" name="dob" id="dob"><br></td>
-		</tr>
-		<tr>
-			<td>Gender: </td>
-			<td><input type="radio" name="gender" value="male"> Male &nbsp;
-					<input type="radio" name="gender" value="female"> Female &nbsp;
-					<input type="radio" name="gender" value="other"> Other<br></td>
-		</tr>
-		<tr>
-			<td>Contact Number: </td>
-			<td><input type="text" name="contact" id="contact" pattern="[1-9]{1}[0-9]{9}" title="Enter the correct mobile number"><br></td>
-		</tr>
-		<tr>
-			<td>Present Address: </td>
-			<td><input type="textarea" name="addr" maxlength="100"></textarea><br></td>
-		</tr>
-		<tr>
-			<td align="center"><input type="radio" name="Autofill" value="same" onclick="getaddress()"> Same As<br></td>
-		</tr>
-		<tr>
-			<td>Permanent Address: </td>
-			<td><input type="textarea" name="address" maxlength="100"></textarea><br></td>
-		</tr>
-		<tr>
-			<td>City: </td>
-			<td><input type="text" name="city" id="city" maxlength="30"> </input><br></td>
-		</tr>
-		<tr>
-			<td>Pincode: </td>
-			<td><input type="text" name="pin" id="pin" pattern="[1-9]{1}[0-9]{5}" title="Enter the correct pincode"> </input><br></td>
-		</tr>
-		<tr>
-			<td>State: </td>
-			<td><input type="text" name="state" id="state" maxlength="30"> </input><br></td>
-		</tr>
-		<tr>
-			<td>Country: </td>
-			<td><input type="text" name="country" id="country" maxlength="30"> </input><br></td>
-		</tr>
-		<tr>
-			<td>Profile Picture: </td>
-			<td><input type="file" name="dp" id="dp" accept="image/*" required> </input><br></td>
-		</tr>
-		
-		</table>
-		<br>
-		<h3>Academic Details:</h3>
-		
-		<table>
-				<!--- Qualification-->
-				<thead>
-					<tr>
-						<td><h5>Qualifications:</h5></td>
-						<td><br></br></td>
-					</tr>
-					<tr>
-						<!--<td align="center"><b>Sl.No.</b></td> !-->
-						<td align="center"><b>Examination</b></td>
-						<td align="center"><b>Board</b></td>
-						<td align="center"><b>Percentage/CGPA</b></td>
-						<td align="center"><b>Year of Passing</b></td>
-					</tr>
-				</thead>
-				<tr>
-					<!--<td align="center">1</td> !-->
-					<td align="center">Class X</td>
-					<td align="center"><input type="text" name="ClassX_Board" maxlength="30" required /></td>
-					<td align="center"><input type="text" name="ClassX_Percentage" maxlength="6" placeholder="Percentage" required /></td>
-					<td align="center"><input type="text" name="ClassX_YrOfPassing" maxlength="4" required /></td>
-				</tr>
-				<tr>
-					<!--<td align="center">2</td> !-->
-					<td align="center">Class XII</td>
-					<td align="center"><input type="text" name="ClassXII_Board" maxlength="30" required /></td>
-					<td align="center"><input type="text" name="ClassXII_Percentage" maxlength="6" placeholder="Percentage" required /></td>
-					<td align="center"><input type="text" name="ClassXII_YrOfPassing" maxlength="4" required /></td>
-				</tr>
-				<tr>
-					<!--<td align="center">3</td> !-->
-					<td align="center">Under Graduation</td>
-					<td align="center"><input type="text" name="ug_board" maxlength="30" required /></td>
-					<td align="center"><input type="text" name="ug_cgpa" maxlength="4" placeholder="CGPA" required /></td>
-					<td align="center"><input type="text" name="ug_yrofpassing" maxlength="4" required /></td>
-				</tr>
-				<tr>
-					<td>Courses Applied:</td>
-					<td><input type="radio" name="btech" value="btech" required /> B.Tech</td>
-				</tr>
-				<tr>
-					<td>Branch:</td>
-					<td>
-						<select name="branch" style="width:150px" onfocusout="branch_out()" >
-							<option value="0">--Select--</option>
-							<option value="BT">Biotechnology</option>
-							<option value="CHE">Chemical Engineering</option>
-							<option value="CIV">Civil engineering</option>
-							<option value="CSE">Computer Science and engineering</option>
-							<option value="ECE">Electronics and communication Engineering</option>
-							<option value="IT">Information Technology</option>
-							<option value="ME">Mechanical engineering</option>
-							<option value="MME">Metallurgical and materials engineering</option>
-						</select>
-					</td>
-					<td><br></br></td>
-				</tr>
-				<tr>
-					<td>Registration No:</td>
-					<td><input type="text" name="regn" placeholder="eg: 16U10141" maxlength="8" pattern="[1-9]{2}[Uu][0-9]{5}" title="eg: 16u10141" required /></td>
-				</tr>
-				<tr>
-					<td>Roll No:</td>
-					<td><input type="text" name="roll_no" maxlength="8" placeholder="eg: 16/IT/01" onclick="getstudentid()" title="eg:16/IT/01" required /></td>
-				</tr>
-			</table>
-			
-		<br>
-		<h3>Login Details:</h3>
-		<table>
-			<tr>
-				<td>Email ID:</td>
-				<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /></td>
-			</tr>
-			<tr>
-				<td>Confirm Password: &nbsp;</td>
-				<td><input type="password" name="c_password" required /></td>
-			</tr>
-		</table>
-			<!--Registration Number: <input type="text" name="regn" id="regn" required> </input><br>
-			Branch: <select required>
-						<option value="select">--Please select your branch--</option>
-						<option value="bt">Biotechnology</option>
-						<option value="che">Chemical Engineering</option>
-						<option value="ce">Civil Engineering</option>
-						<option value="cse">Computer Science and Engineering</option>
-						<option value="ee">Electrical Engineering</option>
-						<option value="ece">Electronics and Communication</option>
-						<option value="it">Information Technology</option>
-						<option value="me">Mechanical Engineering</option>
-						<option value="mme">Metallurgical and Materials Engineering</option>
-					</select><br>
-			Roll Number: <input type="text" name="roll_no" id="roll_no" required> </input><br>
-		
-		<br>
-		<h3>Login Details:</h3>
-		<br>
-			
-			Email: <input type="email" name="email" id="email" required> </input><br>
-			Password: <input type="password" name="password" id="password" pattern> </input><br>
-			Confirm Password: <input type="password" name="c_password" id="c_password" pattern> </input><br>-->
-			
-		<br>
-		<table>
-		  <tr>
-			<td><input type="reset" value="Reset"></input> <br></td>
-			<td><input type="submit" value="Submit"></input> <br></td>
-		  <tr>
-		</table>
-		</form>
- 	   </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <section>
+		<div class="contact-us" class="section scrollspy">
+			<img src="img/img1.jpg" alt="logo" width="250px" height="250px"></img>
+			<div class="options">
+				<button type="button"><a href="details.php"> Details </a></button>
+				<button type="button"><a href="student_edit.php"> Edit_Details </a></button>
+				<!--<button type="button"> Results </button>
+				<button type="button"><a href="results.php"> Show_Results </a></button>-->
+			</div>
+		</div>
 	  </section>
+	  
+	  
+	  
+	  
+	  
+	  <!--<div class="cont">
+		<ul class="nav_bar">
+			<li><a href="user.php">Home</a></li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Details</button>
+					<div class="dropdown-content">
+						<a href="user_edit.php">Edit Details</a>
+						<!-- <a href="admin_login.php">Administrator Login</a> 
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Results</button>
+					<div class="dropdown-content">
+					    <a href="results.php">Results</a>
+					    <a href="login2.html">Administration Signup</a> 
+				  	</div>
+				</div>
+			</li>
+			<!--<li><a href="student_logout.php">Logout</a></li> 
+			</ul>
 		
+	</div>-->
+	  
         <footer>
             <div class="Wraper">
 				<a class="fb-ic" href="https://www.facebook.com/nitdgp.unofficial">

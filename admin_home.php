@@ -52,49 +52,9 @@
 			<div class="options">
 				<button type="button"><a href="admin_accept_delete.php"> Accept or Delete new accounts </a></button>
 				<button type="button"><a href=""> Delete existing accounts </a></button>
-				<button type="button"><a href=""> Update existing accounts </a></button>
+				<button type="button"><a href="admin_student_edit.php"> Update existing accounts </a></button>
 				<button type="button"><a href="show_accounts.php"> Show all accounts </a></button>
 			</div>
-			<!--<form action="mail.php" method="post" class="contact-form">
-				<div id="contact" class="section scrollspy"><span>Sign Up as Student</span></div>
-				<ul>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="name" placeholder="Name" required autocomplete="off" />
-					</li>
-					<li>
-						<label for="email"></label>
-						<input type="text" name="email" placeholder="Email" required autocomplete="off" />
-					</li>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="password" placeholder="Password" required autocomplete="off" />
-					</li>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="contact" placeholder="Contact No." required autocomplete="off" />
-					</li>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="branch" placeholder="Branch" required autocomplete="off" />
-					</li>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="roll" placeholder="Roll No." required autocomplete="off" />
-					</li>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="address" placeholder="Address" required autocomplete="off" />
-					</li>
-					<li>
-						<label for="name"></label>
-						<input type="text" name="dob" placeholder="Date of Birth" required autocomplete="off" />
-					</li>
-					<li>
-						<input type="submit" value="Submit" placeholder="Submit" />
-					</li>
-				</ul>
-				</form>-->
 		</div>
 	  </section>
 		

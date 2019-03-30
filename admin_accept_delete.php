@@ -77,6 +77,7 @@
 		else $message1= 'Selected students are deleted';
 		
 		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
+		$query = "Select id,f_name,email,m_no,regn_no from student_details WHERE status=0";
 		$result = mysqli_query($connection,$query);
 	}
 
@@ -150,6 +151,8 @@
 					?>
 						<tr>
 							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?></td>
+							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?> </td>
+
 							<td> <?php 	echo $row['email']; ?> </td>
 							<td> <?php 	echo $row['regn']; ?> </td>
 							<td> <?php 	echo $row['m_no']; ?> </td>
@@ -168,7 +171,6 @@
 					
 				
 			</form>
-			
 			<section>
         <footer>
             <div class="Wraper">
@@ -186,4 +188,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
+
 </html>
+
+</html>
+

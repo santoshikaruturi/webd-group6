@@ -1,5 +1,10 @@
 
 
+<?php
+	require_once("connections.php");
+	require_once("session.php");
+?>
+
 <!Doctype.html>
 <html>
     <head>

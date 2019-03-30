@@ -101,6 +101,7 @@
 		}
 		else
 		{ ?>
+
 			<!Doctype.html>
 			<html>
 				<head>
@@ -164,3 +165,5 @@
 		}
 	}
 ?>
+			
+			

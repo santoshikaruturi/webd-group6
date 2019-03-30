@@ -4,19 +4,37 @@
 	require_once("session.php");
 ?>
 
+<?php
+	if(!confirm_logged_in()) redirect_to("student_login.php");
+?>
 
 
 <?php
-	// print_r($_SESSION);
-	if(!confirm_logged_in()) redirect_to("admin_login.php");
-	$query = "Select id,f_name,l_name,email,m_no,regn from student_details where status= 1";
-	$result = mysqli_query($connection,$query);
+	global $message;
+	$message = "";
+	if(isset($_POST['submit']))
+	{
+		$index = $_SESSION['user_id'];
+		$username = $_POST['f_name'];
+		$lastname = $_POST['l_name'];
+		$address = $_POST['addr'];
+		$email = $_POST['email'];
+		$mobile = $_POST['contact'];
+		$nationality = $_POST['country'];
+
+		$query = "UPDATE student_details SET f_name='{$username}',l_name='{$lastname}',p_addr='{$address}',email='{$email}',m_no='{$mobile}',country='{$nationality}' WHERE id = '{$index}' ";
+	//echo $query;
+
+		$result = mysqli_query($connection,$query);
+		if( !$result ) {
+    $message = ("Error description: " . mysqli_error($connection));
+    }
+		confirm_query($result);
+		$message =  'Student Details Updated';
+	}
 ?>
 
-	
 
-
-<!Doctype.html>
 <html>
     <head>
         <title>Webd Project</title>
@@ -25,14 +43,12 @@
         <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/admin_home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
-        <link rel="stylesheet" href="css/home.css"/>
-        <link rel="stylesheet" href="css/student_login.css"/>
     </head>
     <body>
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="admin_home.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="student_update.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -51,64 +67,30 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
 					<li class="nav-item">
-
-                        <a class="nav-link" href="admin_logout.php">Logout</a>
+                        <a class="nav-link" href="student_logout.php">Logout</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['fname']; ?></i></a>
                     </li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
-	  
-	  <form action="admin_home.php" method="POST">
-			<br><br><br><br><br>
-				<table style="color: #CCCCCC" align="center" border="1px" bordercolor="white" >
-	  <br>
-	  <br>
-	  
-	  <section>
-			<form action="admin_home.php" method="POST">
-				<table align="left" style="color: white;">
-				<tr><br/></tr>
-				</table>
-				<table style="color: #CCCCCC;" align="center" border="1px" bordercolor="white" cellpadding="10" >
-					<tr>
-						<th> <i> Name </i> </th>
-						<th> <i> Email </i> </th>
-						<th> <i> Registration No. </i> </th>
-						<th> <i> Mobile No. </i></th>
-					</tr>	
-
-					
-					
-					<?php 
-						{
-						while($row=mysqli_fetch_assoc($result)){
-					?>
-						<tr>
-							<td> <?php 	echo $row['f_name']; ?> <?php echo $row['l_name']; ?></td>
-							<td> <?php 	echo $row['email']; ?> </td>
-							<td> <?php 	echo $row['regn']; ?> </td>
-							<td> <?php 	echo $row['m_no']; ?> </td>
-						</tr>	
-
-					<?php } ?>
 		
-				</table>
-			</form>
-			
-			<section>
-						<?php	
-						}	 ?>
-				</table>
-				
-				
-			</form>
-	  </section>
-	  
+	<!--  <section>
+		<div class="contact-us" class="section scrollspy">
+			<img src="img/img1.jpg" alt="logo" width="250px" height="250px"></img>
+			<div class="options">
+				<button type="button"><a href="admin_accept_delete.php"> Accept or Delete new accounts </a></button>
+				<button type="button"><a href=""> Delete existing accounts </a></button>
+				<button type="button"><a href="admin_student_edit.php"> Update existing accounts </a></button>
+				<button type="button"><a href="show_accounts.php"> Show all accounts </a></button>
+			</div>
+		</div>
+	  </section> -->
+	  <div style="color:white ;font-size:300%; margin:50px,50px;"><?php echo $message ?> </div>
+		
 	  <section>
         <footer>
             <div class="Wraper">
@@ -126,8 +108,4 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
-
 </html>
-
-</html>
-

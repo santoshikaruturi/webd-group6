@@ -9,7 +9,8 @@
 <?php
 	// print_r($_SESSION);
 	if(!confirm_logged_in()) redirect_to("admin_login.php");
-	$query = "Select id,f_name,l_name,email,m_no,regn from student_details where status= 1";
+	$index = $_SESSION['user_id'];
+	$query = "Select id,f_name,l_name,email,m_no,regn,roll_no,dp from student_details where id=$index";
 	$result = mysqli_query($connection,$query);
 ?>
 
@@ -32,7 +33,7 @@
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="admin_home.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="details.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -52,10 +53,10 @@
                     </li>
 					<li class="nav-item">
 
-                        <a class="nav-link" href="admin_logout.php">Logout</a>
+                        <a class="nav-link" href="student_logout.php">Logout</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['fname']; ?></i></a>
                     </li>
                 </ul>
             </div>
@@ -65,48 +66,57 @@
 	  
 	  <form action="admin_home.php" method="POST">
 			<br><br><br><br><br>
-				<table style="color: #CCCCCC" align="center" border="1px" bordercolor="white" >
+				<table style="color: #CCCCCC ; width:800 ; font-size:20px" align="center" border="0" bordercolor="black" >
 	  <br>
 	  <br>
 	  
 	  <section>
 			<form action="admin_home.php" method="POST">
-				<table align="left" style="color: white;">
-				<tr><br/></tr>
-				</table>
-				<table style="color: #CCCCCC;" align="center" border="1px" bordercolor="white" cellpadding="10" >
-					<tr>
-						<th> <i> Name </i> </th>
-						<th> <i> Email </i> </th>
-						<th> <i> Registration No. </i> </th>
-						<th> <i> Mobile No. </i></th>
-					</tr>	
-
-					
-					
-					<?php 
-						{
-						while($row=mysqli_fetch_assoc($result)){
-					?>
-						<tr>
-							<td> <?php 	echo $row['f_name']; ?> <?php echo $row['l_name']; ?></td>
-							<td> <?php 	echo $row['email']; ?> </td>
-							<td> <?php 	echo $row['regn']; ?> </td>
-							<td> <?php 	echo $row['m_no']; ?> </td>
-						</tr>	
-
-					<?php } ?>
+	
+		<?php
 		
-				</table>
-			</form>
+			$row=mysqli_fetch_assoc($result)
+		
+		?>
 			
-			<section>
-						<?php	
-						}	 ?>
-				</table>
-				
-				
-			</form>
+		<tr >
+			<td height="50">First Name </td>
+			<td height="50"><?php 	echo $row['f_name']; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="50">Last Name </td>
+			<td height="50"><?php 	echo $row['l_name']; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="50">Email-Id </td>
+			<td height="50"><?php 	echo $row['email']; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="50">Mobile Number </td>
+			<td height="50"><?php 	echo $row['m_no']; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="50">Registration Number </td>
+			<td height="50"><?php 	echo $row['regn']; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="50">Roll Number </td>
+			<td height="50"><?php 	echo $row['roll_no']; ?></td>
+		</tr>
+		
+		<!--<tr>
+			<td >profile Pictue </td>
+			<td ><?php 	echo $row['dp']; ?></td>
+		</tr>-->
+		
+		<?php 	echo $row['dp']; ?>
+		
+		</table>
 	  </section>
 	  
 	  <section>
