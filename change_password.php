@@ -8,27 +8,38 @@
 ?>
 
 <?php
-	// echo $_SESSION['Email'];
-	// $index = $_SESSION['user_id'];
-	// $query = "SELECT * FROM student_details ";
-	// $query .= "WHERE email = '$_SESSION['Email']' ";
-	// echo "string";
-	$k=$_SESSION['email'];
-	$query = "SELECT * FROM student_details WHERE email='$k'";
+	$email=$_SESSION['Email_Id'];
+	$query = "SELECT * FROM student_details WHERE email='$email'";
 	$result = mysqli_query($connection,$query);
-	// echo "string1";
-			$row2 = mysqli_fetch_assoc($result);
-			$firstname = $row2['f_name'];
-			// echo $firstname;
-			$lastname = $row2['l_name'];
-			$address = $row2['addr'];
-			$email = $row2['email'];
-			$mobile = $row2['contact'];
-			$nationality = $row2['country'];
-			 // print_r($result_set);
+	$row2 = mysqli_fetch_assoc($result);
+	$password = $row2['pwd'];
 ?>
 
+<?php
+	global $message;
+	$message = "";
+	if(isset($_POST['submit']))
+	{
+		$index = $_SESSION['user_id'];
+		$new_pwd = $_POST['password'];
 
+		$query = "UPDATE student_details SET pwd='{$new_pwd}' WHERE id = '{$index}' ";
+	//echo $query;
+
+		$result = mysqli_query($connection,$query);
+		if( !$result ) {
+    $message = ("Error description: " . mysqli_error($connection));
+	?>
+	<script> alert("<?php echo $message ?>"); </script>
+	<?php
+    }
+		confirm_query($result);
+		$message =  'Password changed successfully';
+		?>
+		<script> alert("<?php echo $message ?>"); </script>
+		<?php
+	}
+?>
 
 
 <!Doctype.html>
@@ -42,26 +53,13 @@
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
 		<script type="text/javascript" src="js/validate.js"></script>
-		<!--<script type="text/javascript">
-			function check()
-			{
-				var f_name = document.forms["signup"]["f_name"].value;
-				if (f_name == "") 
-				{
-					alert("Name must be filled out");
-					return false;
-				}
-				else 
-					alert("First name filled correctly");
-			}
-		</script>-->
-		
     </head>
+	
     <body>
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="home_signup.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="student_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -79,85 +77,36 @@
 					<li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="student_logout.php">Logout</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['fname']; ?></i> </a>
+					</li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
-		
+	  
+		<br>
+	  
 	  <section class="signup_form">
 	   <div class="container">
-	    <form name="signup" action="student_update.php" method="post" onsubmit="return check()">
+	    <form name="signup" action="change_password.php" method="post" onsubmit="return check()">
 		<table>
-		<!--<thead>
-		<!--<tr>
-			<td><h3>Personal Details:</h3></td>
-		</tr>
-		</thead>-->
-		<br>
-		<tr>
-			<td>First Name: </td>
-			<td><input type="text" name="f_name" maxlength="30" id="f_name" onblur="fname_out()"><br></td>
-		</tr>
-		<tr>
-			<td>Last Name: </td>
-			<td><input type="text" name="l_name" maxlength="30" id="l_name" onblur="lname_out()"><br></td>
-		</tr>
-		<tr>
-			<td>Date of Birth: </td>
-			<td><input type="date" name="dob" id="dob" onblur="dob_out()"><br></td>
-		</tr>
-		<tr>
-			<td>Gender: </td>
-			<td><input type="radio" name="gender" value="male"> Male &nbsp;
-					<input type="radio" name="gender" value="female"> Female &nbsp;
-					<input type="radio" name="gender" value="other"> Other<br></td>
-		</tr>
-		<tr>
-			<td>Contact Number: </td>
-			<td><input type="text" name="contact" id="contact"   onblur="contact_out()"></input><br></td>
-		</tr>
-		<tr>
-			<td>Present Address: </td>
-			<td><input type="textarea" name="addr" maxlength="100" onblur="addr_out()"></textarea><br></td>
-		</tr>
-		<!--<tr>
-			<td align="center"><input type="radio" name="Autofill" value="same" onclick="getaddress()"> Same As<br></td>
-		</tr>-->
-		<!--<tr>
-			<td>Permanent Address: </td>
-			<td><input type="textarea" name="address" maxlength="100" onblur="address_out()"></textarea><br></td>
-		</tr>-->
-		<!--<tr>
-			<td>City: </td>
-			<td><input type="text" name="city" id="city" maxlength="30" onblur="city_out()"> </input><br></td>
-		</tr>
-		<tr>
-			<td>Pincode: </td>
-			<td><input type="text" name="pin" id="pin" pattern="[1-9]{1}[0-9]{5}" title="Enter the correct pincode" onblur="pin_out()"> </input><br></td>
-		</tr>
-		<tr>
-			<td>State: </td>
-			<td><input type="text" name="state" id="state" maxlength="30" onblur="state_out()"> </input><br></td>
-		</tr>
-		<tr>-->
-			<td>Country: </td>
-			<td><input type="text" name="country" id="country" maxlength="30" onblur="coun_out()"> </input><br></td>
-		</tr>
-		<!--<tr>
-			<td>Profile Picture: </td>
-			<td><input type="file" name="dp" id="dp" accept="image/*" required> </input><br></td>
-		</tr>-->
-		
-		<br>
-			
-		<br>
-		<!--<h3>Login Details:</h3>-->
 			<tr>
-				<td>Email ID:</td>
-				<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required onblur="email_out()" /></td>
+				<td>Email Id:</td>
+				<td style="text-transform:lowercase;"><?php echo $email; ?><br></td>
 			</tr>
-			</table>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onblur="pass_out()"/></td>
+			</tr>
+			<tr>
+				<td>Confirm Password: &nbsp;</td>
+				<td><input type="password" name="c_password" required onblur="con_pass_out()"/></td>
+			</tr>
 		<br>
 		<table>
 		  <tr>

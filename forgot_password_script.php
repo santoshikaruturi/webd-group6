@@ -33,7 +33,7 @@
 				$_SESSION['status'] = $found_user['status'];
 				$_SESSION['user_id'] = $found_user['id'];
 				$_SESSION['Email_Id'] = $found_user['email'];
-				header("Location: profile.php");
+				header("Location: student_home.php");
 			}
 			else
 			{ ?>

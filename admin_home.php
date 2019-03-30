@@ -51,8 +51,8 @@
 			<img src="img/img1.jpg" alt="logo" width="250px" height="250px"></img>
 			<div class="options">
 				<button type="button"><a href="admin_accept_delete.php"> Accept or Delete new accounts </a></button>
-				<button type="button"><a href=""> Delete existing accounts </a></button>
-				<button type="button"><a href="admin_student_edit.php"> Update existing accounts </a></button>
+				<button type="button"><a href="delete_existing.php"> Delete existing accounts </a></button>
+				<button type="button"><a href=""> Update existing accounts </a></button>
 				<button type="button"><a href="show_accounts.php"> Show all accounts </a></button>
 			</div>
 		</div>

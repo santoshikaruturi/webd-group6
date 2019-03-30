@@ -1,7 +1,37 @@
 <?php 
-	require_once("connections.php") ;
+	require_once("connections.php"); 
 	require_once("session.php");
- ?>
+?>
+
+<?php
+	if(!confirm_logged_in()) redirect_to("student_login.php");
+?>
+
+<?php
+	// echo $_SESSION['Email'];
+	// $index = $_SESSION['user_id'];
+	// $query = "SELECT * FROM student_details ";
+	// $query .= "WHERE email = '$_SESSION['Email']' ";
+	// echo "string";
+	$k=$_SESSION['Email_Id'];
+	$query = "SELECT * FROM student_details WHERE email='$k'";
+	$result = mysqli_query($connection,$query);
+	// echo "string1";
+			$row2 = mysqli_fetch_assoc($result);
+			$firstname = $row2['f_name'];
+			// echo $firstname;
+			$lastname = $row2['l_name'];
+			$address = $row2['p_addr'];
+			$email = $row2['email'];
+			$mobile = $row2['m_no'];
+			$city = $row2['city'];
+			$state = $row2['state'];
+			$pin = $row2['pin'];
+			$nationality = $row2['country'];
+			 // print_r($result_set);
+?>
+
+
 
 
 <!Doctype.html>
@@ -34,7 +64,7 @@
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="profile.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="student_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -63,58 +93,63 @@
             </div>
         </nav>
 	  </section>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  <section>
-		<div class="contact-us" class="section scrollspy">
-			<img src="img/img1.jpg" alt="logo" width="250px" height="250px"></img>
-			<div class="options">
-				<button type="button"><a href="details.php"> Details </a></button>
-				<button type="button"><a href="student_edit.php"> Edit_Details </a></button>
-				<!--<button type="button"> Results </button>
-				<button type="button"><a href="results.php"> Show_Results </a></button>-->
-			</div>
-		</div>
+		<br>
+	  <section class="signup_form">
+	   <div class="container">
+	    <form name="signup" action="student_update.php" method="post" onsubmit="return check()">
+		<table>
+		<tr>
+			<td>First Name: </td>
+			<td style="height:30px;"><?php echo $firstname; ?><br></td>
+		</tr>
+		<tr>
+			<td>Last Name: </td>
+			<td style="height:30px;"><?php echo $lastname; ?><br></td>
+		</tr>
+		<tr>
+			<td>Date of Birth: </td>
+			<td style="height:30px;"><?php echo $row2['dob']; ?><br></td>
+		</tr>
+		<tr>
+			<td>Gender: </td>
+			<td style="height:30px;"><?php echo $row2['gender']; ?><br></td>
+		</tr>
+		<tr>
+			<td>Contact: </td>
+			<td><input type="text" name="contact" id="contact" onblur="contact_out()" value="<?php echo $mobile; ?>"></input><br></td>
+		</tr>
+		<tr>
+			<td>Present Address: </td>
+			<td><input type="textarea" name="addr" maxlength="100" onblur="addr_out()" value="<?php echo $address; ?>"></textarea><br></td>
+		</tr>
+		<tr>
+			<td>City: </td>
+			<td><input type="text" name="city" id="city" maxlength="30" onblur="city_out()" value="<?php echo $city; ?>"> </input><br></td>
+		</tr>
+		<tr>
+			<td>Pincode: </td>
+			<td><input type="text" name="pin" id="pin" pattern="[1-9]{1}[0-9]{5}" title="Enter the correct pincode" onblur="pin_out()" value="<?php echo $pin; ?>"> </input><br></td>
+		</tr>
+		<tr>
+			<td>State: </td>
+			<td><input type="text" name="state" id="state" maxlength="30" onblur="state_out()" value="<?php echo $state; ?>"> </input><br></td>
+		</tr>
+		<tr>
+			<td>Country: </td>
+			<td><input type="text" name="country" id="country" maxlength="30" onblur="coun_out()" value="<?php echo $nationality; ?>"> </input><br></td>
+		</tr>
+		</table>
+		<br>
+		<table>
+		  <tr>
+			<td><input type="reset" value="Reset"></input> <br></td>
+			<td><input type="submit" name="submit"></input> <br></td>
+		  <tr>
+		</table>
+		</form>
+ 	   </div>
 	  </section>
-	  
-	  
-	  
-	  
-	  
-	  <!--<div class="cont">
-		<ul class="nav_bar">
-			<li><a href="user.php">Home</a></li>
-			<li>
-				<div class="dropdown">
-					<button class="dropbtn">Details</button>
-					<div class="dropdown-content">
-						<a href="user_edit.php">Edit Details</a>
-						<!-- <a href="admin_login.php">Administrator Login</a> 
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="dropdown">
-					<button class="dropbtn">Results</button>
-					<div class="dropdown-content">
-					    <a href="results.php">Results</a>
-					    <a href="login2.html">Administration Signup</a> 
-				  	</div>
-				</div>
-			</li>
-			<!--<li><a href="student_logout.php">Logout</a></li> 
-			</ul>
 		
-	</div>-->
-	  
         <footer>
             <div class="Wraper">
 				<a class="fb-ic" href="https://www.facebook.com/nitdgp.unofficial">

@@ -95,6 +95,13 @@
 			<td>Permanent Address: </td>
 			<td><input type="textarea" name="address" maxlength="100" onblur="address_out()"></textarea><br></td>
 		</tr>
+		</table>
+		<table>
+		<thead>
+		<tr>
+			<td><h5>Present Address Details:</h5></td>
+		</tr>
+		</thead>
 		<tr>
 			<td>City: </td>
 			<td><input type="text" name="city" id="city" maxlength="30" onblur="city_out()"> </input><br></td>

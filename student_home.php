@@ -1,26 +1,40 @@
-<?php
-	require_once("connections.php");
+<?php 
+	require_once("connections.php") ;
 	require_once("session.php");
-	
-	if(logged_in())
-		header("Location: student_home.php");
-?>
+ ?>
+
 
 <!Doctype.html>
 <html>
     <head>
+        <link rel="shortcut icon" href="SAE.ico" type="image/x-icon" />
         <title>Webd Project</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
-        <link rel="stylesheet" href="css/home.css"/>
-        <link rel="stylesheet" href="css/student_login.css"/>
+        <link rel="stylesheet" href="css/student_home.css"/>
+        <link rel="stylesheet" href="css/student_regn.css"/>
+		<script type="text/javascript" src="js/validate.js"></script>
+		<!--<script type="text/javascript">
+			function check()
+			{
+				var f_name = document.forms["signup"]["f_name"].value;
+				if (f_name == "") 
+				{
+					alert("Name must be filled out");
+					return false;
+				}
+				else 
+					alert("First name filled correctly");
+			}
+		</script>-->
+		
     </head>
     <body>
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="home_signup.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="student_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
@@ -38,49 +52,62 @@
 					<li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="student_logout.php">Logout</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['fname']; ?></i> </a>
+					</li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
-	
-	  <section class="login_form">
-		   <div class="container">
-			<form name="login" action="check_student_details.php" method="post">
-			<table>
-				<thead>
-					<tr>
-						<td><h3>Login Details:</h3></td>
-					</tr>
-				</thead>
-				<br>
-				<tr>
-					<td>Email ID:</td>
-					<td><input type="email" name="email" placeholder="eg: abc@gmail.com" required /></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /></td>
-				</tr>
-			</table>
-			<br>
-			<table>
-			  <tr>
-				<td><a href="forgot_password.php"> Forgot Password? </a> <br></td>
-			  <tr>
-			</table>
-			<br>
-			<table>
-			  <tr>
-				<td><input type="reset" value="Reset"></input> <br></td>
-				<td><input type="submit" value="Submit" name="submit"></input> <br></td>
-			  <tr>
-			</table>
-			</form>
-			</div>
-	  </section>
-	
+	 
+	  
 	  <section>
+		<div class="contact-us" class="section scrollspy">
+			<img src="img/img1.jpg" alt="logo" width="250px" height="250px"></img>
+			<div class="options">
+				<button type="button"><a href="details.php"> Details </a></button>
+				<button type="button"><a href="edit_personal.php"> Edit Personal Details </a></button>
+				<button type="button"><a href="change_password.php"> Change Password </a></button>
+				<!--<button type="button"> Results </button>
+				<button type="button"><a href="results.php"> Show_Results </a></button>-->
+			</div>
+		</div>
+	  </section>
+	  
+	  
+	  
+	  
+	  
+	  <!--<div class="cont">
+		<ul class="nav_bar">
+			<li><a href="user.php">Home</a></li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Details</button>
+					<div class="dropdown-content">
+						<a href="user_edit.php">Edit Details</a>
+						<!-- <a href="admin_login.php">Administrator Login</a> 
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Results</button>
+					<div class="dropdown-content">
+					    <a href="results.php">Results</a>
+					    <a href="login2.html">Administration Signup</a> 
+				  	</div>
+				</div>
+			</li>
+			<!--<li><a href="student_logout.php">Logout</a></li> 
+			</ul>
+		
+	</div>-->
+	  
         <footer>
             <div class="Wraper">
 				<a class="fb-ic" href="https://www.facebook.com/nitdgp.unofficial">
@@ -91,8 +118,8 @@
 				</a>
             </div>
         </footer>
-      </section>
         
+		<script type="text/javascript" src="js/validate.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

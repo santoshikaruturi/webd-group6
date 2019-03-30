@@ -26,8 +26,8 @@
 		{
 			$index = $row['id'];
 			echo $index;
-
-			
+			if(isset($_POST['check']))
+			{
 				$count = $count+1;
 				
 				$query = "SELECT * FROM student_details ";
@@ -43,18 +43,23 @@
 			    	$result_set2 = mysqli_query($connection,$query2);
 			    	confirm_query($result_set2);
 			    }
-			
+			}
 		}
 		
+		if($count<=0)  $message1 = 'No students were selected to accept';
+		else $message1= 'Selected students are accepted';
 		
-	 $message1 = 'Selected students Accepted';
+		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
+		$result = mysqli_query($connection,$query);
+	 
 	}
 	if(isset($_POST['Delete'])){
 		$count1=0;
 		while($row = mysqli_fetch_assoc($result))
 		{
 			$index = $row['id'];
-			
+			if(isset($_POST['check']))
+			{
 				$count1 = $count1+1;
 				// echo $index;
 				// print_r($_POST);
@@ -70,14 +75,13 @@
 			    	$result_set2 = mysqli_query($connection,$query2);
 			    	confirm_query($result_set2);
 			    }
-			
+			}
 		}
 	
 		if($count1<=0)  $message1 = 'No students were selected to delete';
 		else $message1= 'Selected students are deleted';
 		
 		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
-		$query = "Select id,f_name,email,m_no,regn_no from student_details WHERE status=0";
 		$result = mysqli_query($connection,$query);
 	}
 
@@ -151,12 +155,10 @@
 					?>
 						<tr>
 							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?></td>
-							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?> </td>
-
 							<td> <?php 	echo $row['email']; ?> </td>
 							<td> <?php 	echo $row['regn']; ?> </td>
 							<td> <?php 	echo $row['m_no']; ?> </td>
-							<td> <input type="checkbox" name="<?php echo $row['id'] ?>"> </td>
+							<td> <input type="checkbox" name="check"> </td>
 						</tr>	
 
 					<?php } ?>
