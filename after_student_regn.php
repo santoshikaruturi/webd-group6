@@ -1,7 +1,5 @@
 <?php
-
 	require_once("connections.php");
-
 	if(isset($_POST["submit"]))
 	{
 		$f_name=$_POST["f_name"];
@@ -35,6 +33,8 @@
 		
 		$email=$_POST["email"];
 		$pwd=$_POST["password"];
+		
+		$dp=$_FILE['dp'];
 		
 		$query1="SELECT * FROM student_details WHERE regn='$regn'";
 		$query2="SELECT * FROM student_details WHERE email='$email'";
@@ -201,4 +201,3 @@
 		mysqli_close($connection);
 	}
 ?>
-

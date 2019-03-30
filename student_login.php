@@ -3,7 +3,7 @@
 	require_once("session.php");
 	
 	if(logged_in())
-		header("Location: profile.php");
+		header("Location: student_home.php");
 ?>
 
 <!Doctype.html>

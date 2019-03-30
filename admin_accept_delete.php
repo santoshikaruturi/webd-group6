@@ -26,8 +26,8 @@
 		{
 			$index = $row['id'];
 			echo $index;
-
-			
+			if(isset($_POST['check']))
+			{
 				$count = $count+1;
 				
 				$query = "SELECT * FROM student_details ";
@@ -43,18 +43,23 @@
 			    	$result_set2 = mysqli_query($connection,$query2);
 			    	confirm_query($result_set2);
 			    }
-			
+			}
 		}
 		
+		if($count<=0)  $message1 = 'No students were selected to accept';
+		else $message1= 'Selected students are accepted';
 		
-	 $message1 = 'Selected students Accepted';
+		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
+		$result = mysqli_query($connection,$query);
+	 
 	}
 	if(isset($_POST['Delete'])){
 		$count1=0;
 		while($row = mysqli_fetch_assoc($result))
 		{
 			$index = $row['id'];
-			
+			if(isset($_POST['check']))
+			{
 				$count1 = $count1+1;
 				// echo $index;
 				// print_r($_POST);
@@ -70,13 +75,13 @@
 			    	$result_set2 = mysqli_query($connection,$query2);
 			    	confirm_query($result_set2);
 			    }
-			
+			}
 		}
 	
 		if($count1<=0)  $message1 = 'No students were selected to delete';
 		else $message1= 'Selected students are deleted';
 		
-		$query = "Select id,f_name,email,m_no,regn_no from student_details WHERE status=0";
+		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=0";
 		$result = mysqli_query($connection,$query);
 	}
 
@@ -84,15 +89,15 @@
 	#$result = mysqli_query($connection,$query);
 ?>
 
-<!Doctype.html>
+
 <html>
     <head>
         <title>Webd Project</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
-        <link rel="stylesheet" href="css/home.css"/>
-        <link rel="stylesheet" href="css/student_login.css"/>
+        <link rel="stylesheet" href="css/admin_home.css"/>
+        <link rel="stylesheet" href="css/student_regn.css"/>
     </head>
     <body>
 	  <section>
@@ -117,17 +122,17 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="admin_logout">Logout</a>
+                        <a class="nav-link" href="admin_logout.php">Logout</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
                     </li>
                 </ul>
             </div>
             </div>
         </nav>
 	  </section>
-	  
+
 	  <br>
 	  <br>
 	  
@@ -149,11 +154,11 @@
 						while($row=mysqli_fetch_assoc($result)){
 					?>
 						<tr>
-							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?> </td>
+							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?></td>
 							<td> <?php 	echo $row['email']; ?> </td>
 							<td> <?php 	echo $row['regn']; ?> </td>
 							<td> <?php 	echo $row['m_no']; ?> </td>
-							<td> <input type="checkbox" name="<?php echo $row['id'] ?>"> </td>
+							<td> <input type="checkbox" name="check"> </td>
 						</tr>	
 
 					<?php } ?>
@@ -168,8 +173,6 @@
 					
 				
 			</form>
-			
-			
 			<section>
         <footer>
             <div class="Wraper">
@@ -187,5 +190,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
+
+</html>
+
 </html>
 

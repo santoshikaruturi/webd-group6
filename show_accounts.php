@@ -3,12 +3,18 @@
 	require_once("connections.php");
 	require_once("session.php");
 ?>
-	
+
+
+
 <?php
-	if(!confirm_logged_in()) header("Location: admin_login.php");
-	$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=1";
+	// print_r($_SESSION);
+	if(!confirm_logged_in()) redirect_to("admin_login.php");
+	$query = "Select id,f_name,l_name,email,m_no,regn from student_details where status= 1";
 	$result = mysqli_query($connection,$query);
 ?>
+
+	
+
 
 <!Doctype.html>
 <html>
@@ -17,6 +23,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
+        <link rel="stylesheet" href="css/admin_home.css"/>
+        <link rel="stylesheet" href="css/student_regn.css"/>
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_login.css"/>
     </head>
@@ -43,10 +51,11 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="admin_logout">Logout</a>
+
+                        <a class="nav-link" href="admin_logout.php">Logout</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="#"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
                     </li>
                 </ul>
             </div>
@@ -54,6 +63,9 @@
         </nav>
 	  </section>
 	  
+	  <form action="admin_home.php" method="POST">
+			<br><br><br><br><br>
+				<table style="color: #CCCCCC" align="center" border="1px" bordercolor="white" >
 	  <br>
 	  <br>
 	  
@@ -69,6 +81,8 @@
 						<th> <i> Registration No. </i> </th>
 						<th> <i> Mobile No. </i></th>
 					</tr>	
+
+					
 					
 					<?php 
 						{
@@ -81,8 +95,14 @@
 							<td> <?php 	echo $row['m_no']; ?> </td>
 						</tr>	
 
+					<?php } ?>
+		
+				</table>
+			</form>
+			
+			<section>
 						<?php	
-						}	} ?>
+						}	 ?>
 				</table>
 				
 				
@@ -106,5 +126,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
+
+</html>
+
 </html>
 
