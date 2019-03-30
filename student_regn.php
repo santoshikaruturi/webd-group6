@@ -183,7 +183,7 @@
 				</tr>
 				<tr>
 					<td>Roll No:</td>
-					<td><input type="text" name="roll_no" maxlength="8" placeholder="eg: 16/IT/01" onclick="getstudentid()" title="eg:16/IT/01" required onblur="getstudentid()"/></td>
+					<td><input type="text" name="roll_no" maxlength="11" placeholder="eg: 16/IT/01" onclick="getstudentid()" title="eg:16/IT/01" required "/></td>
 				</tr>
 			</table>
 			
