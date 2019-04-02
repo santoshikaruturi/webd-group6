@@ -9,11 +9,10 @@
 <?php
 	// print_r($_SESSION);
 	if(!confirm_logged_in()) redirect_to("admin_login.php");
-	$query = "Select id,f_name,l_name,email,m_no,regn from student_details where status= 1";
+	$query = "Select * from student_details where status= 1";
 	$result = mysqli_query($connection,$query);
+	$list=mysqli_fetch_all($result);
 ?>
-
-	
 
 
 <!Doctype.html>
@@ -39,16 +38,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_admin.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_admin.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_admin.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_admin.html">Contact</a>
                     </li>
 					<li class="nav-item">
 
@@ -80,29 +79,32 @@
 						<th> <i> Email </i> </th>
 						<th> <i> Registration No. </i> </th>
 						<th> <i> Mobile No. </i></th>
-					</tr>	
-
-					
-					
-					<?php 
-						{
-						while($row=mysqli_fetch_assoc($result)){
-					?>
+						<th> <i> Age <i></th>
+					</tr>						
+					<?php foreach($list as $row) : ?>
 						<tr>
-							<td> <?php 	echo $row['f_name']; ?> <?php echo $row['l_name']; ?></td>
-							<td> <?php 	echo $row['email']; ?> </td>
-							<td> <?php 	echo $row['regn']; ?> </td>
-							<td> <?php 	echo $row['m_no']; ?> </td>
+							<td> <?php 	echo $row[0]; ?> <?php echo $row[1]; ?></td>
+							<td> <?php 	echo $row[25]; ?> </td>
+							<td> <?php 	echo $row[23]; ?> </td>
+							<td> <?php 	echo $row[4]; ?> </td>
+							<?php 
+								$dateofbirth=$row[2];
+								$today_date=date("Y-m-d");
+								$date1=strtotime($dateofbirth);
+								$date2=strtotime($today_date);
+								$ageinsec=$date2-$date1;
+								$age=$ageinsec/(60*60*24*365);
+							?>
+							<td> <?php echo (int)$age; ?> </td>
 						</tr>	
 
-					<?php } ?>
+					<?php endforeach; ?>
 		
 				</table>
 			</form>
 			
 			<section>
-						<?php	
-						}	 ?>
+
 				</table>
 				
 				

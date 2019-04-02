@@ -10,8 +10,9 @@
 	// print_r($_SESSION);
 	if(!confirm_logged_in()) redirect_to("admin_login.php");
 	$index = $_SESSION['user_id'];
-	$query = "Select id,f_name,l_name,email,m_no,regn,roll_no,dp from student_details where id=$index";
+	$query = "Select * from student_details where id=$index";
 	$result = mysqli_query($connection,$query);
+	$list=mysqli_fetch_all($result);
 ?>
 
 	
@@ -40,16 +41,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_student.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_student.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_student.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_student.html">Contact</a>
                     </li>
 					<li class="nav-item">
 
@@ -73,48 +74,52 @@
 	  <section>
 			<form action="admin_home.php" method="POST">
 	
-		<?php
+		<?php foreach($list as $row) : ?>
 		
-			$row=mysqli_fetch_assoc($result)
-		
-		?>
 			
 		<tr >
 			<td height="50">First Name </td>
-			<td height="50"><?php 	echo $row['f_name']; ?></td>
+			<td height="50"><?php 	echo $row[0]; ?></td>
 		</tr>
 		
 		<tr>
 			<td height="50">Last Name </td>
-			<td height="50"><?php 	echo $row['l_name']; ?></td>
+			<td height="50"><?php 	echo $row[1]; ?></td>
 		</tr>
 		
 		<tr>
 			<td height="50">Email-Id </td>
-			<td height="50"><?php 	echo $row['email']; ?></td>
+			<td height="50"><?php 	echo $row[25]; ?></td>
 		</tr>
 		
 		<tr>
 			<td height="50">Mobile Number </td>
-			<td height="50"><?php 	echo $row['m_no']; ?></td>
+			<td height="50"><?php 	echo $row[4]; ?></td>
 		</tr>
 		
 		<tr>
 			<td height="50">Registration Number </td>
-			<td height="50"><?php 	echo $row['regn']; ?></td>
+			<td height="50"><?php 	echo $row[23]; ?></td>
 		</tr>
 		
 		<tr>
 			<td height="50">Roll Number </td>
-			<td height="50"><?php 	echo $row['roll_no']; ?></td>
+			<td height="50"><?php 	echo $row[24]; ?></td>
 		</tr>
-		
-		<!--<tr>
-			<td >profile Pictue </td>
-			<td ><?php 	echo $row['dp']; ?></td>
-		</tr>-->
-		
-		<?php 	echo $row['dp']; ?>
+			<?php
+				$dateofbirth=$row[2];
+				$today_date=date("Y-m-d");
+				$date1=strtotime($dateofbirth);
+				$date2=strtotime($today_date);
+				$ageinsec=$date2-$date1;
+				$age=$ageinsec/(60*60*24*365);
+			?>
+			<td height="50">Age </td>
+			<td height="50"><?php 	echo (int)$age; ?></td>
+		<tr>
+			
+		</tr>
+		<?php endforeach; ?>
 		
 		</table>
 	  </section>

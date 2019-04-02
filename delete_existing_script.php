@@ -7,7 +7,8 @@
 	
 <?php 
 	session_start();
-	if(isset($_SESSION['username'])){
+	if(isset($_POST['Delete']))
+		{
 			$id = $_GET['id'];
 			$query="SELECT * FROM student_details WHERE id='$id' ";
 			echo $query;
@@ -22,7 +23,7 @@
 				header("Location: admin_home.php");
 			}
 		}
-		else{
+	else{
 		header("Location: admin_home.php");
 	}
 ?>

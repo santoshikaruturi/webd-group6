@@ -15,20 +15,6 @@
         <link rel="stylesheet" href="css/student_home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
 		<script type="text/javascript" src="js/validate.js"></script>
-		<!--<script type="text/javascript">
-			function check()
-			{
-				var f_name = document.forms["signup"]["f_name"].value;
-				if (f_name == "") 
-				{
-					alert("Name must be filled out");
-					return false;
-				}
-				else 
-					alert("First name filled correctly");
-			}
-		</script>-->
-		
     </head>
     <body>
 	  <section>
@@ -41,16 +27,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_student.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_student.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_student.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_student.html">Contact</a>
                     </li>
 					<li class="nav-item">
                         <a class="nav-link" href="student_logout.php">Logout</a>
@@ -77,36 +63,6 @@
 			</div>
 		</div>
 	  </section>
-	  
-	  
-	  
-	  
-	  
-	  <!--<div class="cont">
-		<ul class="nav_bar">
-			<li><a href="user.php">Home</a></li>
-			<li>
-				<div class="dropdown">
-					<button class="dropbtn">Details</button>
-					<div class="dropdown-content">
-						<a href="user_edit.php">Edit Details</a>
-						<!-- <a href="admin_login.php">Administrator Login</a> 
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="dropdown">
-					<button class="dropbtn">Results</button>
-					<div class="dropdown-content">
-					    <a href="results.php">Results</a>
-					    <a href="login2.html">Administration Signup</a> 
-				  	</div>
-				</div>
-			</li>
-			<!--<li><a href="student_logout.php">Logout</a></li> 
-			</ul>
-		
-	</div>-->
 	  
         <footer>
             <div class="Wraper">

@@ -7,50 +7,11 @@
 	
 <?php
 	if(!confirm_logged_in()) redirect_to("admin_login.php");
-	$query = "Select f_name,l_name,email,m_no,regn,id from student_details WHERE status=1";
+	$query = "Select * from student_details WHERE status=1";
 	$result = mysqli_query($connection,$query);
+	$list=mysqli_fetch_all($result);
 	
 ?>	
-
-<?php
-	global $message1;
-	
-	$message1="";
-	if(isset($_POST['Delete'])){
-		$count1=0;
-		while($row = mysqli_fetch_assoc($result))
-		{
-			$index = $row['id'];
-			if(isset($_POST['check']))
-			{
-				$count1 = $count1+1;
-				// echo $index;
-				// print_r($_POST);
-				$query = "SELECT * FROM student_details ";
-			    $query .= "WHERE id = '{$index}' ";
-			    $result_set = mysqli_query($connection,$query);
-			    confirm_query($result_set);
-
-			    if (mysqli_num_rows($result_set)==1)
-			    {
-			    	$query2 = "DELETE FROM student_details ";
-			    	$query2 .= "WHERE id = '{$index}' ";
-			    	$result_set2 = mysqli_query($connection,$query2);
-			    	confirm_query($result_set2);
-			    }
-			}
-		}
-	
-		if($count1<=0)  $message1 = 'No students were selected to delete';
-		else $message1= 'Selected students are deleted';
-		
-		$query = "Select id,f_name,l_name,email,m_no,regn from student_details WHERE status=1";
-		$result = mysqli_query($connection,$query);
-	}
-
-	#$query = "Select id,f_name,email,m_no,regn_no from student_details WHERE status=0";
-	#$result = mysqli_query($connection,$query);
-?>
 
 
 <html>
@@ -73,16 +34,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_admin.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_admin.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_admin.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_admin.html">Contact</a>
                     </li>
 					<li class="nav-item">
                         <a class="nav-link" href="admin_logout.php">Logout</a>
@@ -99,11 +60,7 @@
 	  <br>
 	  <br>
 	  
-	  <form action="delete_existing.php" method="POST">
 				<table align="left" style="color: white;">
-				<tr>
-				<th><h4> <?php echo $message1; ?></h4> </th>
-				</tr>
 				</table>
 				<table style="color: #CCCCCC;" align="center" border="1px" bordercolor="white" cellpadding="10" >
 					<tr>
@@ -113,28 +70,19 @@
 						<th> <i> Mobile No. </i></th>
 					</tr>	
 
-					<?php 
-						while($row=mysqli_fetch_assoc($result)){
-					?>
+					<?php foreach($list as $row): ?>
 						<tr>
-							<td> <?php 	echo $row['f_name']; ?> <?php 	echo $row['l_name']; ?></td>
-							<td> <?php 	echo $row['email']; ?> </td>
-							<td> <?php 	echo $row['regn']; ?> </td>
-							<td> <?php 	echo $row['m_no']; ?> </td>
-							<td> <input type="checkbox" name="check"> </td>
+							<td> <?php 	echo $row[0]; ?> <?php 	echo $row[1]; ?></td>
+							<td> <?php 	echo $row[25]; ?> </td>
+							<td> <?php 	echo $row[23]; ?> </td>
+							<td> <?php 	echo $row[4]; ?> </td>
+							<form action="delete_existing_script.php?id=<?php echo $row[28];?>" method="POST">
+							<th><input type="submit" align="center" name="Delete" value="Delete"></th>
+							</form>
+						<?php endforeach; ?>
 						</tr>	
-
-					<?php } ?>
 						</table>
-						<br><br>
-						<table align="center">
-							<tr>
-							<th> <input type="submit" align="center" name="Delete" value="Delete Accounts"> </th>
-							</tr>
-						</table>
-					
-				
-			</form>
+			
 			<section>
         <footer>
             <div class="Wraper">
