@@ -52,7 +52,7 @@
 			<div class="options">
 				<button type="button"><a href="admin_accept_delete.php"> Accept or Delete new accounts </a></button>
 				<button type="button"><a href="delete_existing.php"> Delete existing accounts </a></button>
-				<button type="button"><a href=""> Update existing accounts </a></button>
+				<button type="button"><a href="update_existing.php"> Update existing accounts </a></button>
 				<button type="button"><a href="show_accounts.php"> Show all accounts </a></button>
 			</div>
 		</div>

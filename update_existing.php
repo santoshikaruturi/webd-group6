@@ -1,18 +1,23 @@
 <?php 
 	
 	require_once("connections.php");
-
 	require_once("session.php");
 ?>
-	
+
+
+
 <?php
+	// print_r($_SESSION);
 	if(!confirm_logged_in()) redirect_to("admin_login.php");
-	$query = "Select * from student_details WHERE status=0";
+	$query = "Select * from student_details where status= 1";
 	$result = mysqli_query($connection,$query);
 	$list=mysqli_fetch_all($result);
-?>	
+?>
+
+	
 
 
+<!Doctype.html>
 <html>
     <head>
         <title>Webd Project</title>
@@ -21,6 +26,8 @@
         <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/admin_home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
+        <link rel="stylesheet" href="css/home.css"/>
+        <link rel="stylesheet" href="css/student_login.css"/>
     </head>
     <body>
 	  <section>
@@ -45,6 +52,7 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
 					<li class="nav-item">
+
                         <a class="nav-link" href="admin_logout.php">Logout</a>
                     </li>
 					<li class="nav-item">
@@ -55,12 +63,12 @@
             </div>
         </nav>
 	  </section>
-
+	  
 	  <br>
 	  <br>
 	  
-
-				<table align="left" style="color: white;">
+	  <section>
+			<table align="left" style="color: white;">
 				</table>
 				<table style="color: #CCCCCC;" align="center" border="1px" bordercolor="white" cellpadding="10" >
 					<tr>
@@ -71,26 +79,28 @@
 					</tr>	
 
 					 
-						<?php foreach($list as $x): ?>
+						<?php 
+						foreach($list as $res) :?>
 						<tr>
-							<td> <?php 	echo $x[0]; ?> <?php 	echo $x[1]; ?></td>
-							<td> <?php 	echo $x[25]; ?> </td>
-							<td> <?php 	echo $x[23]; ?> </td>
-							<td> <?php 	echo $x[4]; ?> </td>
+							<td> <?php 	echo $res[0]; ?> <?php 	echo $res[1]; ?></td>
+							<td> <?php 	echo $res[25]; ?> </td>
+							<td> <?php 	echo $res[23]; ?> </td>
+							<td> <?php 	echo $res[4]; ?> </td>
 							
-						<form action="admin_accept_delete_script.php?id=<?php echo $x[28];?>" method="POST">
-						<th><input type="submit" align="center" name="Accept" value="Accept"></th>
-						<th> <input type="submit" align="center" name="Delete" value="Delete"></th>
+							<form action='update_acadData.php?id=<?php echo $res[28]; ?>' method="POST">
+						<th><input type="submit" align="center" name="Update" value="Update"></th>
 						</form>
-						</tr>	
 						<?php endforeach; ?>
+						</tr>	
 						</table>
 						<br><br>
 		
 					
 				
 			
-			<section>
+	  </section>
+	  
+	  <section>
         <footer>
             <div class="Wraper">
 				<a class="fb-ic" href="https://www.facebook.com/nitdgp.unofficial">
@@ -110,4 +120,5 @@
 
 </html>
 
+</html>
 

@@ -34,7 +34,7 @@
 		$email=$_POST["email"];
 		$pwd=$_POST["password"];
 		
-		$dp=$_FILE['dp'];
+		//$dp=$_FILE['dp'];
 		
 		$query1="SELECT * FROM student_details WHERE regn='$regn'";
 		$query2="SELECT * FROM student_details WHERE email='$email'";
