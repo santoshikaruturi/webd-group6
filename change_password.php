@@ -66,16 +66,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_student.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_student.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_student.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_student.html">Contact</a>
                     </li>
 					<li class="nav-item">
                         <a class="nav-link" href="student_logout.php">Logout</a>
@@ -97,7 +97,7 @@
 		<table>
 			<tr>
 				<td>Email Id:</td>
-				<td style="text-transform:lowercase;"><?php echo $email; ?><br></td>
+				<td style="text-transform:none;"><?php echo $email; ?><br></td>
 			</tr>
 			<tr>
 				<td>Password:</td>

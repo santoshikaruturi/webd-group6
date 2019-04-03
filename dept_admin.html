@@ -4,7 +4,7 @@
         <title>About</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <!-- <link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
+        <!--<link href="https://fonts.googleapis.com/css?family=Acme|Coiny" rel="stylesheet">-->
         <link rel="stylesheet" href="css/home.css"/>
         <link rel="stylesheet" href="css/student_regn.css"/>
     </head>
@@ -12,23 +12,30 @@
 	  <section>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <a class="navbar-brand" href="home_signup.php"><i class="fa fa-home"></i> Home</a>
+            <a class="navbar-brand" href="admin_home.php"><i class="fa fa-home"></i> Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_admin.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_admin.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_admin.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_admin.html">Contact</a>
+                    </li>
+					<li class="nav-item">
+
+                        <a class="nav-link" href="admin_logout.php">Logout</a>
+                    </li>
+					<li class="nav-item">
+                        <a class="nav-link"><i>Hello, <?php echo $_SESSION['username']; ?></i></a>
                     </li>
                 </ul>
             </div>
@@ -41,9 +48,9 @@
 		
 	  <section class="dept">
 		<div class="container" style="color:white">
-			<h1 style="text-align:center"> Facilities </h1>
+			<h1 style="text-align:center"> Departments </h1>
 			<p>
-				Name and brief of facilities we have.
+				Name and brief of all depts in dgp.
 				<br>
 				Developing writers can often benefit from examining an essay, a paragraph, or even a sentence to determine what makes it effective. On the following pages are several paragraphs for you to evaluate on your own, along with the Writing Center's explanation.
 

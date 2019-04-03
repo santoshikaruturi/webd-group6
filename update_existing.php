@@ -40,16 +40,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_admin.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_admin.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_admin.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_admin.html">Contact</a>
                     </li>
 					<li class="nav-item">
 
@@ -82,12 +82,12 @@
 						<?php 
 						foreach($list as $res) :?>
 						<tr>
-							<td> <?php 	echo $res[0]; ?> <?php 	echo $res[1]; ?></td>
+							<td> <?php 	echo $res[1]; ?> <?php 	echo $res[2]; ?></td>
 							<td> <?php 	echo $res[25]; ?> </td>
 							<td> <?php 	echo $res[23]; ?> </td>
-							<td> <?php 	echo $res[4]; ?> </td>
+							<td> <?php 	echo $res[5]; ?> </td>
 							
-							<form action='update_acadData.php?id=<?php echo $res[28]; ?>' method="POST">
+							<form action='update_acadData.php?id=<?php echo $res[0]; ?>' method="POST">
 						<th><input type="submit" align="center" name="Update" value="Update"></th>
 						</form>
 						<?php endforeach; ?>

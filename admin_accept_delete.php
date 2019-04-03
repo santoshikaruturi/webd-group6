@@ -33,16 +33,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="about_admin.html">About</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="dept.html">Departments</a>
+                        <a class="nav-link" href="dept_admin.html">Departments</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="facilities.html">Facilities</a>
+                        <a class="nav-link" href="facilities_admin.html">Facilities</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact_admin.html">Contact</a>
                     </li>
 					<li class="nav-item">
                         <a class="nav-link" href="admin_logout.php">Logout</a>
@@ -73,12 +73,12 @@
 					 
 						<?php foreach($list as $x): ?>
 						<tr>
-							<td> <?php 	echo $x[0]; ?> <?php 	echo $x[1]; ?></td>
+							<td> <?php 	echo $x[1]; ?> <?php 	echo $x[2]; ?></td>
 							<td> <?php 	echo $x[25]; ?> </td>
 							<td> <?php 	echo $x[23]; ?> </td>
-							<td> <?php 	echo $x[4]; ?> </td>
+							<td> <?php 	echo $x[5]; ?> </td>
 							
-						<form action="admin_accept_delete_script.php?id=<?php echo $x[28];?>" method="POST">
+						<form action="admin_accept_delete_script.php?id=<?php echo $x[0];?>" method="POST">
 						<th><input type="submit" align="center" name="Accept" value="Accept"></th>
 						<th> <input type="submit" align="center" name="Delete" value="Delete"></th>
 						</form>
