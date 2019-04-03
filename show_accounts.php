@@ -9,7 +9,7 @@
 <?php
 	// print_r($_SESSION);
 	if(!confirm_logged_in()) redirect_to("admin_login.php");
-	$query = "Select id,f_name,l_name,email,m_no,regn from student_details where status= 1";
+	$query = "Select * from student_details where status= 1";
 	$result = mysqli_query($connection,$query);
 ?>
 
@@ -93,6 +93,15 @@
 							<td> <?php 	echo $row['email']; ?> </td>
 							<td> <?php 	echo $row['regn']; ?> </td>
 							<td> <?php 	echo $row['m_no']; ?> </td>
+							<?php
+								$dateofbirth=$row['dob'];
+								$today_date=date("Y-m-d");
+								$date1=strtotime($dateofbirth);
+								$date2=strtotime($today_date);
+								$ageinsec=$date2-$date1;
+								$age=$ageinsec/(60*60*24*365);
+							?>
+							<td> <?php echo (int)$age; ?> </td>
 						</tr>	
 
 					<?php } ?>
