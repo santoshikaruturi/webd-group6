@@ -12,11 +12,8 @@
 	$index = $_SESSION['user_id'];
 	$query = "Select * from student_details where id=$index";
 	$result = mysqli_query($connection,$query);
-<<<<<<< HEAD
 	$list=mysqli_fetch_all($result);
-=======
-	$list = mysqli_fetch_all($result);
->>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
+
 ?>
 
 	
@@ -74,74 +71,56 @@
 				<table style="color: #CCCCCC ; width:800 ; font-size:20px" align="center" border="0" bordercolor="black" >
 	  <section>
 			<form action="admin_home.php" method="POST">
+			
+			<div style="margin-left:1000px">
+			
+			<?php foreach($list as $row) : ?>
+			
+				<?php 	echo '<img src="data:image/jpeg;base64,'.base64_encode($row[11]).'"/>'; ?>
+	
+			<?php endforeach; ?>
+			
+			</div>
+			
 	
 		<?php foreach($list as $row) : ?>
 		
-<<<<<<< HEAD
+		<tr>
+			<!--<td height="50">Photo </td>-->
+		<!--	<td height="100" style="margin-left: 200px;"><?php 	/*echo '<img src="data:image/jpeg;base64,'.base64_encode($row[11]).'"/>'; */ ?></td>-->
+		</tr>
+		
 			
 		<tr >
-			<td height="50">First Name </td>
-			<td height="50"><?php 	echo $row[0]; ?></td>
-=======
-			foreach($list as $row):
+			<td height="40">First Name </td>
+			<td height="40"><?php 	echo $row[0]; ?></td>
+		</tr>
 		
-		?>
+		<tr>
+			<td height="40">Last Name </td>
+			<td height="40"><?php 	echo $row[1]; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="40">Email-Id </td>
+			<td height="40"><?php 	echo $row[25]; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="40">Mobile Number </td>
+			<td height="40"><?php 	echo $row[4]; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="40">Registration Number </td>
+			<td height="40"><?php 	echo $row[23]; ?></td>
+		</tr>
+		
+		<tr>
+			<td height="40">Roll Number </td>
+			<td height="40"><?php 	echo $row[24]; ?></td>
+		</tr>
 			
-		<tr >
-			<td height="50">First Name </td>
-			<td height="50"><?php 	echo $row[1]; ?></td>
->>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
-		</tr>
-		
-		<tr>
-			<td height="50">Last Name </td>
-<<<<<<< HEAD
-			<td height="50"><?php 	echo $row[1]; ?></td>
-=======
-			<td height="50"><?php 	echo $row[2]; ?></td>
->>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
-		</tr>
-		
-		<tr>
-			<td height="50">Email-Id </td>
-			<td height="50"><?php 	echo $row[25]; ?></td>
-		</tr>
-		
-		<tr>
-			<td height="50">Mobile Number </td>
-<<<<<<< HEAD
-			<td height="50"><?php 	echo $row[4]; ?></td>
-=======
-			<td height="50"><?php 	echo $row[5]; ?></td>
->>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
-		</tr>
-		
-		<tr>
-			<td height="50">Registration Number </td>
-			<td height="50"><?php 	echo $row[23]; ?></td>
-		</tr>
-		
-		<tr>
-			<td height="50">Roll Number </td>
-			<td height="50"><?php 	echo $row[24]; ?></td>
-<<<<<<< HEAD
-		</tr>
-			<?php
-				$dateofbirth=$row[2];
-				$today_date=date("Y-m-d");
-				$date1=strtotime($dateofbirth);
-				$date2=strtotime($today_date);
-				$ageinsec=$date2-$date1;
-				$age=$ageinsec/(60*60*24*365);
-			?>
-			<td height="50">Age </td>
-			<td height="50"><?php 	echo (int)$age; ?></td>
-		<tr>
-			
-		</tr>
-		<?php endforeach; ?>
-=======
-		</tr>
 		
 		<?php
 				$dateofbirth=$row[2];
@@ -157,13 +136,6 @@
 		</tr>
 		<?php endforeach; ?>
 		
-		<!--<tr>
-			<td >profile Pictue </td>
-			<td ><?php #	echo $row['dp']; ?></td>
-		</tr>-->
-		
-		<?php 	#echo $row['dp']; ?>
->>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 		
 		</table>
 	  </section>

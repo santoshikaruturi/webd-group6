@@ -34,7 +34,7 @@
 		$email=$_POST["email"];
 		$pwd=$_POST["password"];
 		
-		//$dp=$_FILE['dp'];
+		$dp=addslashes(file_get_contents($_FILES['dp']['tmp_name']));
 		
 		$query1="SELECT * FROM student_details WHERE regn='$regn'";
 		$query2="SELECT * FROM student_details WHERE email='$email'";
@@ -113,7 +113,6 @@
 		else 
 		{  
 			$query = "INSERT INTO student_details(f_name,l_name,dob,gender,m_no,p_addr,pm_addr,city,pin,state,country,ClassX_Board,ClassX_Percentage,ClassX_YrOfPassing,ClassXII_Board,ClassXII_Percentage,ClassXII_YrOfPassing,ug_board,ug_cgpa,ug_yrofpassing,course,branch,regn,roll_no,email,pwd,status,dp) VALUES ('$f_name','$l_name','$dob','$gender','$m_no','$p_adrr','$pm_adrr','$city','$pin','$state','$country','$ClassX_Board','$ClassX_Percentage','$ClassX_YrOfPassing','$ClassXII_Board','$ClassXII_Percentage','$ClassXII_YrOfPassing','$ug_board','$ug_cgpa','$ug_yrofpassing','$course','$branch','$regn','$roll_no','$email','$pwd',0,'$dp')";
-			echo $query;
 			$result=NULL;
 			$result = mysqli_query($connection,$query);
 			

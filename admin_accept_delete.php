@@ -73,12 +73,12 @@
 					 
 						<?php foreach($list as $x): ?>
 						<tr>
-							<td> <?php 	echo $x[1]; ?> <?php 	echo $x[2]; ?></td>
+							<td> <?php 	echo $x[0]; ?> <?php 	echo $x[1]; ?></td>
 							<td> <?php 	echo $x[25]; ?> </td>
 							<td> <?php 	echo $x[23]; ?> </td>
-							<td> <?php 	echo $x[5]; ?> </td>
+							<td> <?php 	echo $x[4]; ?> </td>
 							
-						<form action="admin_accept_delete_script.php?id=<?php echo $x[0];?>" method="POST">
+						<form action="admin_accept_delete_script.php?id=<?php echo $x[28];?>" method="POST">
 						<th><input type="submit" align="center" name="Accept" value="Accept"></th>
 						<th> <input type="submit" align="center" name="Delete" value="Delete"></th>
 						</form>
