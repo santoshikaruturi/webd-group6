@@ -82,12 +82,12 @@
 						<?php 
 						foreach($list as $res) :?>
 						<tr>
-							<td> <?php 	echo $res[0]; ?> <?php 	echo $res[1]; ?></td>
+							<td> <?php 	echo $res[1]; ?> <?php 	echo $res[2]; ?></td>
 							<td> <?php 	echo $res[25]; ?> </td>
 							<td> <?php 	echo $res[23]; ?> </td>
-							<td> <?php 	echo $res[4]; ?> </td>
+							<td> <?php 	echo $res[5]; ?> </td>
 							
-							<form action='update_acadData.php?id=<?php echo $res[28]; ?>' method="POST">
+							<form action='update_acadData.php?id=<?php echo $res[0]; ?>' method="POST">
 						<th><input type="submit" align="center" name="Update" value="Update"></th>
 						</form>
 						<?php endforeach; ?>

@@ -83,12 +83,21 @@
 					</tr>						
 					<?php foreach($list as $row) : ?>
 						<tr>
+<<<<<<< HEAD
 							<td> <?php 	echo $row[0]; ?> <?php echo $row[1]; ?></td>
 							<td> <?php 	echo $row[25]; ?> </td>
 							<td> <?php 	echo $row[23]; ?> </td>
 							<td> <?php 	echo $row[4]; ?> </td>
 							<?php 
 								$dateofbirth=$row[2];
+=======
+							<td> <?php 	echo $row['f_name']; ?> <?php echo $row['l_name']; ?></td>
+							<td> <?php 	echo $row['email']; ?> </td>
+							<td> <?php 	echo $row['regn']; ?> </td>
+							<td> <?php 	echo $row['m_no']; ?> </td>
+							<?php
+								$dateofbirth=$row['dob'];
+>>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 								$today_date=date("Y-m-d");
 								$date1=strtotime($dateofbirth);
 								$date2=strtotime($today_date);

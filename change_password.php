@@ -97,7 +97,7 @@
 		<table>
 			<tr>
 				<td>Email Id:</td>
-				<td style="text-transform:lowercase;"><?php echo $email; ?><br></td>
+				<td style="text-transform:none;"><?php echo $email; ?><br></td>
 			</tr>
 			<tr>
 				<td>Password:</td>

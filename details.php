@@ -12,7 +12,11 @@
 	$index = $_SESSION['user_id'];
 	$query = "Select * from student_details where id=$index";
 	$result = mysqli_query($connection,$query);
+<<<<<<< HEAD
 	$list=mysqli_fetch_all($result);
+=======
+	$list = mysqli_fetch_all($result);
+>>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 ?>
 
 	
@@ -66,25 +70,36 @@
 	  </section>
 	  
 	  <form action="admin_home.php" method="POST">
-			<br><br><br><br><br>
+			<br><br><br>
 				<table style="color: #CCCCCC ; width:800 ; font-size:20px" align="center" border="0" bordercolor="black" >
-	  <br>
-	  <br>
-	  
 	  <section>
 			<form action="admin_home.php" method="POST">
 	
 		<?php foreach($list as $row) : ?>
 		
+<<<<<<< HEAD
 			
 		<tr >
 			<td height="50">First Name </td>
 			<td height="50"><?php 	echo $row[0]; ?></td>
+=======
+			foreach($list as $row):
+		
+		?>
+			
+		<tr >
+			<td height="50">First Name </td>
+			<td height="50"><?php 	echo $row[1]; ?></td>
+>>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 		</tr>
 		
 		<tr>
 			<td height="50">Last Name </td>
+<<<<<<< HEAD
 			<td height="50"><?php 	echo $row[1]; ?></td>
+=======
+			<td height="50"><?php 	echo $row[2]; ?></td>
+>>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 		</tr>
 		
 		<tr>
@@ -94,7 +109,11 @@
 		
 		<tr>
 			<td height="50">Mobile Number </td>
+<<<<<<< HEAD
 			<td height="50"><?php 	echo $row[4]; ?></td>
+=======
+			<td height="50"><?php 	echo $row[5]; ?></td>
+>>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 		</tr>
 		
 		<tr>
@@ -105,6 +124,7 @@
 		<tr>
 			<td height="50">Roll Number </td>
 			<td height="50"><?php 	echo $row[24]; ?></td>
+<<<<<<< HEAD
 		</tr>
 			<?php
 				$dateofbirth=$row[2];
@@ -120,6 +140,30 @@
 			
 		</tr>
 		<?php endforeach; ?>
+=======
+		</tr>
+		
+		<?php
+				$dateofbirth=$row[2];
+				$today_date=date("Y-m-d");
+				$date1=strtotime($dateofbirth);
+				$date2=strtotime($today_date);
+				$ageinsec=$date2-$date1;
+				$age=$ageinsec/(60*60*24*365);
+			?>
+		<tr>
+			<td height="50">Age </td>
+			<td height="50"><?php 	echo (int)$age; ?></td>
+		</tr>
+		<?php endforeach; ?>
+		
+		<!--<tr>
+			<td >profile Pictue </td>
+			<td ><?php #	echo $row['dp']; ?></td>
+		</tr>-->
+		
+		<?php 	#echo $row['dp']; ?>
+>>>>>>> 12f7863366fae3a14e30a5a5d65dfd2d03c359bd
 		
 		</table>
 	  </section>
